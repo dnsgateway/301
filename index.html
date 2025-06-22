@@ -9,10 +9,9 @@
   <script src="https://unpkg.com/feather-icons"></script>
 
   <style>
-    /* ----------  GLOBAL & LAYOUT ---------- */
     :root{
-      --brand-yellow:#FAD93B;
-      --brand-purple:#5111FF;
+      --brand-yellow:#FFD936;
+      --brand-purple:#1C0F73;
       --brand-blue:#00AEEF;
       --wp-text:#F2F2F2;
       --phone-bg:#111;
@@ -24,7 +23,7 @@
     *{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
     body{
       min-height:100vh;
-      background:linear-gradient(135deg,var(--brand-purple) 0%,var(--brand-blue) 100%);
+      background:linear-gradient(135deg,var(--brand-purple), var(--brand-blue));
       color:#fff;
       display:flex;
       flex-direction:column;
@@ -38,7 +37,6 @@
       align-items:center;
       justify-content:center;
     }
-    /* ----------  LEFT PANEL ---------- */
     .pitch{
       flex:1 1 340px;
       max-width:480px;
@@ -74,11 +72,10 @@
       height:52px;
       object-fit:contain;
     }
-    /* ----------  PHONE MOCK-UP ---------- */
     .device{
       flex:1 1 300px;
       max-width:380px;
-      aspect-ratio:9/19;          /* keeps phone shape */
+      aspect-ratio:9/19;
       border:8px solid #000;
       border-radius:var(--phone-radius);
       background:var(--phone-bg);
@@ -94,11 +91,10 @@
       background:#000;border-radius:12px;
     }
     .screen{
-      position:absolute;inset:44px 0 44px 0;  /* bezel */
+      position:absolute;inset:44px 0 44px 0;
       background:#fff;overflow-y:auto;
       -webkit-overflow-scrolling:touch;
     }
-    /* ----------  STATUS & NAV BAR ---------- */
     .status-bar{
       padding:10px 18px;
       display:flex;
@@ -121,16 +117,15 @@
       font-size:.85rem;
       font-weight:600;
     }
-    /* ----------  HERO ---------- */
     .hero{
       position:relative;
       height:240px;
-      background:url('https://images.unsplash.com/photo-1500048993959-d221b6868a6b?auto=format&fit=crop&w=500&q=80') center/cover;
+      background:url('https://images.unsplash.com/photo-1603084040761-50d58789ab62?fit=crop&w=600&q=80') center/cover;
     }
     .hero::after{
       content:'';
       position:absolute;inset:0;
-      background:linear-gradient(to bottom,rgba(0,0,0,.05) 0%, rgba(0,0,0,.6) 100%);
+      background:linear-gradient(to bottom,rgba(0,0,0,.05), rgba(0,0,0,.6));
     }
     .hero-content{
       position:absolute;
@@ -156,7 +151,6 @@
       border-radius:6px;
       font-weight:600;
     }
-    /* ----------  SEARCH CARD ---------- */
     .card{
       width:90%;
       margin:-60px auto 30px;
@@ -196,7 +190,6 @@
       padding:12px;
       font-weight:600;
     }
-    /* ----------  PROPERTY PREVIEW (placeholder) ---------- */
     .property-scroll{
       display:flex;
       overflow-x:auto;
@@ -207,7 +200,6 @@
       width:140px;height:100px;border-radius:10px;object-fit:cover;
       flex:0 0 auto;
     }
-    /* ----------  BOTTOM NAV ---------- */
     .bottom-nav{
       position:sticky;bottom:0;left:0;right:0;
       border-top:1px solid var(--ui-border);
@@ -222,7 +214,6 @@
     }
     .bottom-nav .active{color:#000;}
     .bottom-nav svg{width:22px;height:22px;margin-bottom:2px}
-    /* ----------  FOOTER ---------- */
     footer{
       background:#0B0B27;
       color:var(--wp-text);
@@ -241,39 +232,29 @@
 
 <body>
   <main>
-    <!-- ======  LEFT PANEL  ====== -->
     <section class="pitch">
       <h1>Discover the<br>world, your way</h1>
       <p>Book Last Minute Hotels and Stays with our easy-to-use app.</p>
-
       <a href="#prototype" class="btn-primary" id="interactBtn">INTERACT WITH PROTOTYPE</a>
-
       <div class="store-badges">
-        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-             alt="Get it on Google Play">
-        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-             alt="Download on the App Store">
+        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
+        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
       </div>
     </section>
 
-    <!-- ======  PHONE MOCK-UP  ====== -->
     <section class="device" id="prototype">
       <div class="speaker-notch"></div>
-
       <div class="screen">
-
-        <!-- Status + top nav -->
         <div class="status-bar">
           <span>505</span>
           <nav>
-            <a href="#" class="top-link">Stays</a>
-            <a href="#" class="top-link">Experiences</a>
-            <a href="#" class="top-link">Mobile app</a>
+            <a href="#">Stays</a>
+            <a href="#">Experiences</a>
+            <a href="#">Mobile app</a>
           </nav>
           <span class="lang-pill">EN</span>
         </div>
 
-        <!-- Hero image & CTA -->
         <div class="hero">
           <div class="hero-content">
             <h2>Discover the world,<br>your way</h2>
@@ -282,58 +263,35 @@
           </div>
         </div>
 
-        <!-- Search card -->
         <div class="card">
           <div class="tabs">
             <div class="tab active" data-tab="stays">Stays</div>
             <div class="tab" data-tab="packages">Travel Packages</div>
           </div>
-
-          <!-- STAYS form (default) -->
           <form class="form-stays">
-            <label>Going to</label>
-            <input placeholder="Enter hotel destination">
-
-            <label>Check-in Date</label>
-            <input type="date">
-
-            <label>Check-out Date</label>
-            <input type="date">
-
-            <label>Travelers</label>
-            <select><option>1 Adult</option></select>
-
+            <label>Going to</label><input placeholder="Enter hotel destination">
+            <label>Check-in Date</label><input type="date">
+            <label>Check-out Date</label><input type="date">
+            <label>Travelers</label><select><option>1 Adult</option></select>
             <button type="button" class="search-btn">Search Stays</button>
           </form>
-
-          <!-- PACKAGES form (hidden until selected) -->
           <form class="form-packages" hidden>
-            <label>From</label>
-            <input placeholder="Departure city">
-
-            <label>Destination</label>
-            <input placeholder="Enter destination">
-
-            <label>Dates</label>
-            <input type="date">
-
-            <label>Travelers</label>
-            <select><option>1 Adult</option></select>
-
+            <label>From</label><input placeholder="Departure city">
+            <label>Destination</label><input placeholder="Enter destination">
+            <label>Dates</label><input type="date">
+            <label>Travelers</label><select><option>1 Adult</option></select>
             <button type="button" class="search-btn">Search Packages</button>
           </form>
         </div>
 
-        <!-- Sample “Browse by property type” scroll -->
         <h3 style="padding:0 20px 6px;color:#000;font-size:1.05rem">Browse by property type</h3>
         <div class="property-scroll">
-          <img src="https://source.unsplash.com/collection/483251/200x200" alt="Hotels">
-          <img src="https://source.unsplash.com/collection/483251/201x201" alt="Apartments">
-          <img src="https://source.unsplash.com/collection/483251/202x202" alt="Resorts">
-          <img src="https://source.unsplash.com/collection/483251/203x203" alt="Villas">
+          <img src="https://source.unsplash.com/0w-uTa0Xz7w/1600x900" alt="Hotels">
+          <img src="https://source.unsplash.com/w1r1kB_N6Eo/1600x900" alt="Apartments">
+          <img src="https://source.unsplash.com/n5W4QgGK7lo/1600x900" alt="Resorts">
+          <img src="https://source.unsplash.com/MGJYJhZyhe0/1600x900" alt="Villas">
         </div>
 
-        <!-- Bottom navigation -->
         <nav class="bottom-nav">
           <button data-nav="home" class="active"><i data-feather="home"></i>Home</button>
           <button data-nav="search"><i data-feather="search"></i>Search</button>
@@ -344,7 +302,6 @@
     </section>
   </main>
 
-  <!-- ======  FOOTER  ====== -->
   <footer>
     <div style="display:flex;align-items:center;gap:12px">
       <img src="https://s.w.org/style/images/about/WordPress-logotype-wmark-white.png" alt="WordPress logo">
@@ -356,33 +313,23 @@
     </div>
   </footer>
 
-  <!-- ----------  SCRIPTS  ---------- -->
   <script>
-    // Replace icon placeholders
     feather.replace();
-
-    /* TAB SWITCHING */
     document.querySelectorAll('.tab').forEach(tab=>{
       tab.addEventListener('click',()=>{
-        // visual state
         document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
         tab.classList.add('active');
-        // forms
         const sel = tab.dataset.tab;
         document.querySelector('.form-stays').hidden = sel!=='stays';
         document.querySelector('.form-packages').hidden = sel!=='packages';
       });
     });
-
-    /* BOTTOM NAV HIGHLIGHT */
     document.querySelectorAll('.bottom-nav button').forEach(btn=>{
       btn.addEventListener('click',()=>{
         document.querySelectorAll('.bottom-nav button').forEach(b=>b.classList.remove('active'));
         btn.classList.add('active');
       });
     });
-
-    /* “INTERACT WITH PROTOTYPE” smooth scroll */
     document.getElementById('interactBtn').onclick = e=>{
       e.preventDefault();
       document.getElementById('prototype').scrollIntoView({behavior:'smooth', block:'center'});
