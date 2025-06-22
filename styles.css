@@ -1,0 +1,81 @@
+/* ===== RESET / BASE ===== */
+* { box-sizing:border-box; margin:0; padding:0; }
+html,body { height:100%; font-family:"Poppins",sans-serif; }
+a { text-decoration:none; color:inherit; }
+
+/* ===== TECH GRADIENT BACKGROUND ===== */
+body::before{
+  content:"";
+  position:fixed; inset:0; z-index:-1;
+  background:linear-gradient(135deg,#12153d 0%,#2a1d86 35%,#693bff 100%);
+}
+
+/* ===== LAYOUT ===== */
+.page{min-height:100%; display:flex; flex-direction:column;}
+.hero{flex:1; display:flex; padding:4vw; gap:4vw;}
+.left-panel{flex:1; max-width:480px;}
+.mockup-wrapper{flex:1;}
+
+/* ===== MARKETING PANEL ===== */
+.store-badge img{height:44px;}
+.lang-pill{display:inline-block; padding:.15rem .55rem; border:1px solid #000; border-radius:8px; font-size:.75rem;}
+#demo-btn:hover{filter:brightness(1.1);}
+
+/* ===== IPHONE MOCK-UP FRAME ===== */
+.iphone{
+  position:relative;
+  width:280px; height:580px;
+  border:12px solid #000;
+  border-radius:38px;
+  background:#fff; overflow:hidden;
+  box-shadow:0 20px 40px rgba(0,0,0,.4);
+}
+/* small notch */
+.iphone::before{
+  content:"";
+  position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:140px; height:30px;
+  background:#000; border-bottom-left-radius:20px; border-bottom-right-radius:20px;
+}
+.status-bar{height:26px; font-size:.75rem; color:#fff;}
+.status-bar span:last-child i{width:16px; height:16px; stroke-width:2.2px;}
+.status-bar,
+.bottom-nav{background:#000; color:#fff;}
+.screen{height:calc(100% - 86px); overflow-y:auto; -webkit-overflow-scrolling:touch; }
+
+/* ===== APP UI STYLES (LIGHTWEIGHT) ===== */
+.app-navbar{padding:.75rem 1rem; font-size:.9rem; background:#fff;}
+.app-navbar .logo{font-family:'Permanent Marker',cursive; font-size:1.3rem; color:#000;}
+.app-navbar a{color:#555;}
+.app-navbar .link-active{font-weight:600;}
+
+.slide{position:relative; height:160px; overflow:hidden;}
+.hero-img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.55);}
+.slide-overlay{position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:#fff;}
+.slide-overlay h3{font-size:1.1rem; line-height:1.2; font-weight:700;}
+.slide-overlay p{font-size:.7rem;}
+
+.booking-card{padding:1rem;}
+.tabs .nav-link{font-size:.8rem; padding:.25rem 0; cursor:pointer;}
+.tabs .nav-link.active{font-weight:600; border-bottom:2px solid #000;}
+
+.form-label{font-size:.75rem; margin-bottom:.25rem; font-weight:600;}
+.form-control,.traveler-btn{font-size:.8rem; border-radius:8px; border:1px solid #ddd; background:#f8f9fa;}
+.traveler-btn{padding:.6rem .8rem;}
+.traveler-btn i{width:14px;}
+
+.scroller{padding:1rem;}
+.scroller h4{font-size:.9rem; margin-bottom:.5rem; font-weight:600;}
+.scroll-row{display:flex; gap:10px; overflow-x:auto; scroll-snap-type:x mandatory;}
+.prop-card{flex:0 0 120px; scroll-snap-align:start; position:relative;}
+.prop-card img{width:100%; height:80px; object-fit:cover; border-radius:10px;}
+.prop-card span{position:absolute; bottom:6px; left:6px; font-size:.7rem; background:rgba(0,0,0,.6); color:#fff; padding:2px 6px; border-radius:4px;}
+
+.bottom-nav a{color:#888; padding:12px 0; flex:1; text-align:center;}
+.bottom-nav a.active{color:#ffcc00;}
+.bottom-nav a i{width:20px; height:20px;}
+
+/* ===== FOOTER ===== */
+.wp-footer{background:#000; color:#fff; font-size:.85rem;}
+.wp-footer a{color:#fff; opacity:.8;}
+.wp-footer a:hover{opacity:1;}
