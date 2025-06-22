@@ -3,412 +3,144 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>505 Travel – Discover the world, your way</title>
+  <title>505 • Travel Savings</title>
+  <link rel="stylesheet" href="styles.css" />
 
-  <!-- Google Fonts & Font Awesome for icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <!-- Feather & Font Awesome for icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
 
-  <style>
-    /* ----------  GLOBAL  ---------- */
-    :root{
-      --brand-yellow:#FFD400;
-      --brand-dark:#222;
-      --gradient-start:#11172B;
-      --gradient-end:#3A476A;
-      --panel-bg:#FFFFFF;
-      --input-bg:#F7F7F7;
-      --border:#E5E5E5;
-      --radius:10px;
-    }
-    *{box-sizing:border-box;padding:0;margin:0}
-    html,body{height:100%;font-family:'Poppins',sans-serif}
-    body{
-      background:linear-gradient(135deg,var(--gradient-start),var(--gradient-end));
-      color:#fff;
-      display:flex;
-      flex-direction:column;
-      min-height:100vh;
-    }
-    a{color:inherit;text-decoration:none}
-
-    /* ----------  SPLIT LAYOUT  ---------- */
-    .wrapper{
-      flex:1 0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:60px 5vw;
-      gap:5vw;
-      flex-wrap:wrap;
-    }
-    .info-panel{
-      flex:1 1 420px;
-      max-width:480px;
-    }
-    .info-panel h1{
-      font-size:3rem;
-      font-weight:700;
-      line-height:1.1;
-      margin-bottom:20px;
-    }
-    .info-panel p{
-      font-size:1.1rem;
-      margin-bottom:30px;
-      color:#EDEDED;
-    }
-    .cta-btn{
-      display:inline-block;
-      padding:14px 32px;
-      font-size:1rem;
-      font-weight:600;
-      border:none;
-      border-radius:50px;
-      background:var(--brand-yellow);
-      color:var(--brand-dark);
-      cursor:pointer;
-      transition:all .25s;
-    }
-    .cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 16px rgba(0,0,0,.25)}
-    .store-badges{
-      display:flex;
-      gap:14px;
-      margin-top:40px;
-    }
-    .store-badges img{
-      height:48px;
-      width:auto;
-      object-fit:contain;
-    }
-
-    /* ----------  PHONE MOCK-UP  ---------- */
-    .mockup-wrapper{
-      flex:1 1 340px;
-      display:flex;
-      justify-content:center;
-      perspective:1000px;
-    }
-    .phone{
-      width:280px;
-      border:14px solid #000;
-      border-radius:36px;
-      box-shadow:0 30px 50px rgba(0,0,0,.6);
-      background:#000;
-      transform:rotateY(-6deg);
-    }
-    .speaker{height:6px;width:60px;background:#222;border-radius:3px;margin:10px auto 0}
-    .screen{
-      height:560px;
-      overflow:hidden;
-      border-radius:20px;
-      background:var(--panel-bg);
-      position:relative;
-    }
-
-    /* ----------  IN-APP UI  ---------- */
-    /* top bar */
-    .topbar{
-      padding:10px 16px;
-      display:flex;
-      align-items:center;
-      gap:14px;
-      font-size:.9rem;
-      font-weight:500;
-    }
-    .topbar .logo{font-size:1.3rem;font-weight:700}
-    .lang-btn{
-      margin-left:auto;
-      background:var(--brand-yellow);
-      color:#000;
-      padding:4px 10px;
-      border-radius:6px;
-      font-size:.8rem;
-    }
-    /* HERO */
-    .hero{
-      position:relative;
-      height:180px;
-      background:url('https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=800&q=60') center/cover;
-    }
-    .hero::after{
-      content:'';
-      position:absolute;
-      inset:0;
-      background:rgba(0,0,0,.45);
-    }
-    .hero-content{
-      position:relative;
-      z-index:2;
-      height:100%;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      padding:0 22px;
-      color:#fff;
-    }
-    .hero h2{font-size:1.4rem;font-weight:700;line-height:1.2;margin-bottom:6px}
-    .hero h3{font-size:1rem;font-weight:500;margin-bottom:18px}
-    .book-btn{
-      background:var(--brand-yellow);
-      color:#000;
-      padding:10px 22px;
-      border-radius:6px;
-      font-weight:600;
-      font-size:.95rem;
-      border:none;
-    }
-
-    /* SEARCH CARD */
-    .search-card{
-      background:#fff;
-      color:#000;
-      border-radius:var(--radius);
-      position:relative;
-      top:-28px;
-      margin:0 14px;
-      padding:24px 18px 18px;
-      box-shadow:0 8px 20px rgba(0,0,0,.15);
-      font-size:.88rem;
-    }
-    .tab-switcher{
-      display:flex;
-      border-bottom:2px solid var(--border);
-      margin:-4px -18px 18px;
-    }
-    .tab-switcher button{
-      flex:1;
-      padding:14px 0;
-      border:none;
-      background:transparent;
-      font-weight:600;
-      cursor:pointer;
-    }
-    .tab-switcher .active{
-      color:var(--brand-dark);
-      border-bottom:4px solid var(--brand-dark);
-    }
-    .form-group{margin-bottom:14px}
-    .form-group label{display:block;margin-bottom:4px;font-weight:500}
-    .form-group input,
-    .form-group select{
-      width:100%;
-      padding:10px 12px;
-      background:var(--input-bg);
-      border:1px solid var(--border);
-      border-radius:6px;
-      font-size:.85rem;
-    }
-    .search-btn{
-      width:100%;
-      background:var(--brand-yellow);
-      padding:12px;
-      border-radius:6px;
-      border:none;
-      font-weight:600;
-      font-size:.95rem;
-      cursor:pointer;
-    }
-
-    /* BOTTOM NAV */
-    .bottom-nav{
-      position:absolute;
-      bottom:0;
-      left:0;
-      right:0;
-      height:56px;
-      background:#fff;
-      display:flex;
-      justify-content:space-around;
-      align-items:center;
-      border-top:1px solid var(--border);
-    }
-    .bottom-nav button{
-      background:none;
-      border:none;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:2px;
-      font-size:.65rem;
-      color:#777;
-      cursor:pointer;
-    }
-    .bottom-nav .active{color:var(--brand-dark)}
-    .bottom-nav i{font-size:1.2rem}
-
-    /* ----------  FOOTER  ---------- */
-    footer{
-      background:#111;
-      color:#aaa;
-      text-align:center;
-      padding:40px 20px 60px;
-      font-size:.85rem;
-      line-height:1.6;
-    }
-
-    /* ----------  RESPONSIVE  ---------- */
-    @media(max-width:960px){
-      .phone{transform:none}
-      .wrapper{padding:50px 6vw}
-    }
-    @media(max-width:660px){
-      .wrapper{flex-direction:column;gap:60px}
-      .info-panel{text-align:center;padding-right:0}
-      .info-panel h1{font-size:2.4rem}
-      .store-badges{justify-content:center}
-    }
-  </style>
+  <!-- Bootstrap grid only (no JS required) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
+  <!-- ===== PAGE WRAPPER ===== -->
+  <div class="page flex-column">
 
-  <!--  ======  MAIN CONTENT  ======  -->
-  <section class="wrapper">
+    <!-- ===== HERO / SPLIT ===== -->
+    <section class="hero d-flex">
+      <!-- MARKETING PANEL -->
+      <div class="left-panel d-flex flex-column justify-content-center align-items-start text-light">
+        <h1 class="display-5 fw-bold">505 Travel&nbsp;Savings</h1>
+        <p class="lead mb-4">Discover the world, your way. Book last-minute stays, build packages, and unlock member-only deals—right in your pocket.</p>
 
-    <!--  LEFT / MARKETING COPY  -->
-    <div class="info-panel">
-      <h1>Discover the world, <br>your way</h1>
-      <p>505 is the fastest way to book last-minute hotels, unique stays & curated experiences - straight from your phone.</p>
-      <button class="cta-btn" id="demoBtn">Try the Interactive Demo</button>
+        <div class="d-flex gap-3 mb-4">
+          <!-- Store badges – swap out with official badge PNG/SVG if you have it -->
+          <a href="#" class="store-badge"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store"></a>
+          <a href="#" class="store-badge"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play"></a>
+        </div>
 
-      <!-- store badges -->
-      <div class="store-badges">
-        <a href="#"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store"></a>
-        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play"></a>
+        <button id="demo-btn" class="btn btn-warning btn-lg">Try the Live Prototype</button>
       </div>
-    </div>
 
-    <!--  RIGHT / PHONE MOCK-UP  -->
-    <div class="mockup-wrapper">
-      <div class="phone" id="phone">
-        <div class="speaker"></div>
-        <div class="screen">
-
-          <!-- Top nav -->
-          <div class="topbar">
-            <span class="logo">505</span>
-            <span>Stays</span>
-            <span>Experiences</span>
-            <span>Mobile&nbsp;app</span>
-            <span class="lang-btn">EN</span>
+      <!-- PHONE MOCK-UP PANEL -->
+      <div class="mockup-wrapper d-flex justify-content-center align-items-center">
+        <div class="iphone">
+          <!-- Status bar -->
+          <div class="status-bar d-flex justify-content-between align-items-center px-2">
+            <span>9:41</span><span><i data-feather="wifi"></i>&nbsp;<i data-feather="battery"></i></span>
           </div>
 
-          <!-- Hero -->
-          <div class="hero">
-            <div class="hero-content">
-              <h2>Discover the world,<br>your way</h2>
-              <h3>Book Last Minute Hotels and Stays</h3>
-              <button class="book-btn">Book Now</button>
-            </div>
-          </div>
+          <!-- Scrollable SCREEN content -->
+          <div class="screen">
+            <!-- Top nav (logo + tabs) -->
+            <header class="app-navbar d-flex align-items-center">
+              <h2 class="logo flex-grow-1 mb-0">505</h2>
+              <nav class="d-flex gap-3">
+                <a class="link-active" href="#">Stays</a>
+                <a href="#" class="disabled">Experiences</a>
+                <a href="#"><i data-feather="smartphone"></i></a>
+                <a href="#" class="lang-pill">EN</a>
+              </nav>
+            </header>
 
-          <!-- Search widget -->
-          <div class="search-card">
-            <div class="tab-switcher">
-              <button id="staysTab" class="active">Stays</button>
-              <button id="packagesTab">Travel Packages</button>
-            </div>
+            <!-- Hero carousel (static first slide) -->
+            <section class="slide">
+              <img class="hero-img" src="https://images.unsplash.com/photo-1526779259212-756e75f1a72b?auto=format&fit=crop&w=800&q=60" alt="">
+              <div class="slide-overlay text-center">
+                <h3 class="mb-2">Discover the world,<br/>your way</h3>
+                <p class="small mb-3">Book Last Minute Hotels and Stays</p>
+                <button class="btn btn-warning btn-sm w-75">Book Now</button>
+              </div>
+            </section>
 
-            <form id="staysForm">
-              <div class="form-group">
-                <label for="dest">Going to</label>
-                <input type="text" id="dest" placeholder="Enter hotel destination">
-              </div>
-              <div class="form-group">
-                <label>Check-in Date</label>
-                <input type="date" id="checkin">
-              </div>
-              <div class="form-group">
-                <label>Check-out Date</label>
-                <input type="date" id="checkout">
-              </div>
-              <div class="form-group">
-                <label>Travelers</label>
-                <select id="travellers">
-                  <option>1 Adult</option>
-                  <option>2 Adults</option>
-                  <option>Family</option>
-                </select>
-              </div>
-              <button type="button" class="search-btn">Search Stays</button>
-            </form>
+            <!-- Tabbed booking card -->
+            <section class="booking-card">
+              <ul class="tabs nav nav-underline">
+                <li class="nav-item"><a data-tab="stays" class="nav-link active">Stays</a></li>
+                <li class="nav-item"><a data-tab="packages" class="nav-link">Travel Packages</a></li>
+              </ul>
 
-            <!-- dummy packages form -->
-            <form id="packagesForm" style="display:none">
-              <div class="form-group">
-                <label>Leaving from</label>
-                <input type="text" placeholder="City or airport">
+              <div id="tab-stays" class="tab-pane active pt-3">
+                <label class="form-label">Going to</label>
+                <input type="text" class="form-control mb-2" placeholder="Enter hotel destination">
+                <div class="d-flex gap-2">
+                  <input type="date" class="form-control" />
+                  <input type="date" class="form-control" />
+                </div>
+                <label class="form-label mt-2">Travelers</label>
+                <button class="form-control d-flex justify-content-between align-items-center traveler-btn">
+                  <span id="traveler-summary">1&nbsp;Adult</span><i data-feather="chevron-down"></i>
+                </button>
+                <button class="btn btn-warning w-100 mt-3">Search Stays</button>
               </div>
-              <div class="form-group">
-                <label>Going to</label>
-                <input type="text" placeholder="Destination">
+
+              <div id="tab-packages" class="tab-pane pt-3">
+                <p class="small text-muted mb-4">Packages form placeholder…</p>
+                <button class="btn btn-warning w-100">Search Packages</button>
               </div>
-              <div class="form-group">
-                <label>Departure</label>
-                <input type="date">
+            </section>
+
+            <!-- Horizontal property type scroller -->
+            <section class="scroller">
+              <h4 class="mb-3">Browse by property type</h4>
+              <div class="scroll-row">
+                <div class="prop-card"><img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=400&q=60"/><span>Hotels</span></div>
+                <div class="prop-card"><img src="https://images.unsplash.com/photo-1507086185671-33dcf56a7d47?auto=format&fit=crop&w=400&q=60"/><span>Apartments</span></div>
+                <div class="prop-card"><img src="https://images.unsplash.com/photo-1600585154340-be6161f8b4b6?auto=format&fit=crop&w=400&q=60"/><span>Resorts</span></div>
               </div>
-              <div class="form-group">
-                <label>Return</label>
-                <input type="date">
-              </div>
-              <button type="button" class="search-btn">Find Packages</button>
-            </form>
-          </div>
+            </section>
+          </div><!-- /screen -->
 
           <!-- Bottom navigation -->
-          <div class="bottom-nav">
-            <button class="active"><i class="fa-solid fa-house"></i><span>Home</span></button>
-            <button><i class="fa-solid fa-magnifying-glass"></i><span>Search</span></button>
-            <button><i class="fa-regular fa-bookmark"></i><span>Trips</span></button>
-            <button><i class="fa-regular fa-user"></i><span>Profile</span></button>
-          </div>
-        </div>
+          <nav class="bottom-nav d-flex justify-content-around align-items-center">
+            <a href="#" class="active"><i data-feather="home"></i></a>
+            <a href="#"><i data-feather="calendar"></i></a>
+            <a href="#"><i data-feather="credit-card"></i></a>
+            <a href="#"><i data-feather="user"></i></a>
+          </nav>
+        </div><!-- /iphone -->
       </div>
-    </div>
+    </section>
 
-  </section>
+    <!-- ===== WORDPRESS-STYLE FOOTER ===== -->
+    <footer class="wp-footer">
+      <div class="container-lg py-4 d-flex flex-wrap justify-content-between gap-3">
+        <ul class="list-unstyled">
+          <li><strong>About&nbsp;Us</strong></li>
+          <li><a href="#">List your property</a></li>
+        </ul>
+        <ul class="list-unstyled">
+          <li><strong>Cities</strong></li>
+          <li><a href="#">Chicago</a></li><li><a href="#">Orlando</a></li><li><a href="#">Miami</a></li><li><a href="#">New York</a></li>
+        </ul>
+        <ul class="list-unstyled">
+          <li><strong>Legal</strong></li>
+          <li><a href="#">Terms of Use</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Cookie Policy</a></li>
+        </ul>
+        <ul class="list-unstyled">
+          <li><strong>Follow&nbsp;Us</strong></li>
+          <li><a href="#">Instagram</a></li><li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <p class="mb-0 small text-center py-2 border-top">© 2025 WordPress</p>
+    </footer>
+  </div><!-- /page -->
 
-  <!--  ======  FOOTER  ======  -->
-  <footer>
-    © 2025 505 Travel. Proudly powered by WordPress • Theme: 505 by Mel.
-  </footer>
+  <!-- Feather icons init -->
+  <script>feather.replace()</script>
 
-  <!--  ======  SCRIPTS  ======  -->
-  <script>
-    /* Tab logic */
-    const staysTab=document.getElementById('staysTab');
-    const packagesTab=document.getElementById('packagesTab');
-    const staysForm=document.getElementById('staysForm');
-    const packagesForm=document.getElementById('packagesForm');
-
-    staysTab.onclick=()=>switchTab('stays');
-    packagesTab.onclick=()=>switchTab('packages');
-
-    function switchTab(tab){
-      if(tab==='stays'){
-        staysTab.classList.add('active');
-        packagesTab.classList.remove('active');
-        staysForm.style.display='block';
-        packagesForm.style.display='none';
-      }else{
-        packagesTab.classList.add('active');
-        staysTab.classList.remove('active');
-        packagesForm.style.display='block';
-        staysForm.style.display='none';
-      }
-    }
-
-    /* Bottom-nav highlight */
-    document.querySelectorAll('.bottom-nav button').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        document.querySelector('.bottom-nav .active').classList.remove('active');
-        btn.classList.add('active');
-      });
-    });
-
-    /* “Try Demo” scroll */
-    document.getElementById('demoBtn').onclick=()=>{
-      document.getElementById('phone').scrollIntoView({behavior:'smooth',block:'center'});
-    }
-  </script>
+  <!-- Simple JS to switch tabs -->
+  <script src="scripts.js"></script>
 </body>
 </html>
