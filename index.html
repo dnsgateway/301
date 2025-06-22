@@ -2,145 +2,208 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>505 • Travel Savings</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>505 Travel App</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
 
-  <!-- Feather & Font Awesome for icons -->
-  <script src="https://unpkg.com/feather-icons"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #2A2A72, #009FFD);
+      color: #fff;
+    }
 
-  <!-- Bootstrap grid only (no JS required) -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    .container {
+      display: flex;
+      flex-direction: row;
+      height: 100vh;
+      width: 100%;
+      padding: 40px;
+      gap: 40px;
+    }
+
+    .left-panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 5%;
+    }
+
+    .left-panel h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .left-panel p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: #e0e0e0;
+    }
+
+    .left-panel .btn {
+      padding: 12px 20px;
+      font-size: 1rem;
+      background-color: #FFD600;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+
+    .store-icons {
+      display: flex;
+      gap: 15px;
+    }
+
+    .store-icons img {
+      width: 130px;
+      cursor: pointer;
+    }
+
+    .right-panel {
+      flex: 1;
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+      padding: 20px;
+    }
+
+    .mockup {
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center/cover;
+      border-radius: 12px;
+      padding: 20px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .mockup .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .mockup h2 {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .form-box {
+      background: rgba(255,255,255,0.95);
+      border-radius: 14px;
+      color: #000;
+      padding: 15px;
+      margin-top: 20px;
+    }
+
+    .form-box label, .form-box input, .form-box select {
+      display: block;
+      width: 100%;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+    }
+
+    .form-box input, .form-box select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .form-box .submit {
+      background: #FFD600;
+      padding: 12px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .bottom-nav {
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      background: rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .bottom-nav button {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #111;
+      color: #ccc;
+      font-size: 0.85rem;
+    }
+  </style>
 </head>
 <body>
-  <!-- ===== PAGE WRAPPER ===== -->
-  <div class="page flex-column">
-
-    <!-- ===== HERO / SPLIT ===== -->
-    <section class="hero d-flex">
-      <!-- MARKETING PANEL -->
-      <div class="left-panel d-flex flex-column justify-content-center align-items-start text-light">
-        <h1 class="display-5 fw-bold">505 Travel&nbsp;Savings</h1>
-        <p class="lead mb-4">Discover the world, your way. Book last-minute stays, build packages, and unlock member-only deals—right in your pocket.</p>
-
-        <div class="d-flex gap-3 mb-4">
-          <!-- Store badges – swap out with official badge PNG/SVG if you have it -->
-          <a href="#" class="store-badge"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store"></a>
-          <a href="#" class="store-badge"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play"></a>
-        </div>
-
-        <button id="demo-btn" class="btn btn-warning btn-lg">Try the Live Prototype</button>
+  <div class="container">
+    <div class="left-panel">
+      <h1>505 Travel App</h1>
+      <p>Discover last-minute hotels, curated experiences, and travel packages—your way.</p>
+      <button class="btn">Try the Prototype</button>
+      <div class="store-icons">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Available_on_the_App_Store_%28black%29_SVG.svg" alt="App Store">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play">
       </div>
-
-      <!-- PHONE MOCK-UP PANEL -->
-      <div class="mockup-wrapper d-flex justify-content-center align-items-center">
-        <div class="iphone">
-          <!-- Status bar -->
-          <div class="status-bar d-flex justify-content-between align-items-center px-2">
-            <span>9:41</span><span><i data-feather="wifi"></i>&nbsp;<i data-feather="battery"></i></span>
+    </div>
+    <div class="right-panel">
+      <div class="mockup">
+        <div>
+          <div class="top">
+            <span><strong>505</strong> | Stays | Experiences</span>
+            <button style="background:#FFD600; padding:4px 10px; border-radius:5px;">EN</button>
           </div>
+          <h2>Discover the world,<br>your way</h2>
+          <p>Book Last Minute Hotels and Stays</p>
+          <button class="btn">Book Now</button>
 
-          <!-- Scrollable SCREEN content -->
-          <div class="screen">
-            <!-- Top nav (logo + tabs) -->
-            <header class="app-navbar d-flex align-items-center">
-              <h2 class="logo flex-grow-1 mb-0">505</h2>
-              <nav class="d-flex gap-3">
-                <a class="link-active" href="#">Stays</a>
-                <a href="#" class="disabled">Experiences</a>
-                <a href="#"><i data-feather="smartphone"></i></a>
-                <a href="#" class="lang-pill">EN</a>
-              </nav>
-            </header>
-
-            <!-- Hero carousel (static first slide) -->
-            <section class="slide">
-              <img class="hero-img" src="https://images.unsplash.com/photo-1526779259212-756e75f1a72b?auto=format&fit=crop&w=800&q=60" alt="">
-              <div class="slide-overlay text-center">
-                <h3 class="mb-2">Discover the world,<br/>your way</h3>
-                <p class="small mb-3">Book Last Minute Hotels and Stays</p>
-                <button class="btn btn-warning btn-sm w-75">Book Now</button>
-              </div>
-            </section>
-
-            <!-- Tabbed booking card -->
-            <section class="booking-card">
-              <ul class="tabs nav nav-underline">
-                <li class="nav-item"><a data-tab="stays" class="nav-link active">Stays</a></li>
-                <li class="nav-item"><a data-tab="packages" class="nav-link">Travel Packages</a></li>
-              </ul>
-
-              <div id="tab-stays" class="tab-pane active pt-3">
-                <label class="form-label">Going to</label>
-                <input type="text" class="form-control mb-2" placeholder="Enter hotel destination">
-                <div class="d-flex gap-2">
-                  <input type="date" class="form-control" />
-                  <input type="date" class="form-control" />
-                </div>
-                <label class="form-label mt-2">Travelers</label>
-                <button class="form-control d-flex justify-content-between align-items-center traveler-btn">
-                  <span id="traveler-summary">1&nbsp;Adult</span><i data-feather="chevron-down"></i>
-                </button>
-                <button class="btn btn-warning w-100 mt-3">Search Stays</button>
-              </div>
-
-              <div id="tab-packages" class="tab-pane pt-3">
-                <p class="small text-muted mb-4">Packages form placeholder…</p>
-                <button class="btn btn-warning w-100">Search Packages</button>
-              </div>
-            </section>
-
-            <!-- Horizontal property type scroller -->
-            <section class="scroller">
-              <h4 class="mb-3">Browse by property type</h4>
-              <div class="scroll-row">
-                <div class="prop-card"><img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=400&q=60"/><span>Hotels</span></div>
-                <div class="prop-card"><img src="https://images.unsplash.com/photo-1507086185671-33dcf56a7d47?auto=format&fit=crop&w=400&q=60"/><span>Apartments</span></div>
-                <div class="prop-card"><img src="https://images.unsplash.com/photo-1600585154340-be6161f8b4b6?auto=format&fit=crop&w=400&q=60"/><span>Resorts</span></div>
-              </div>
-            </section>
-          </div><!-- /screen -->
-
-          <!-- Bottom navigation -->
-          <nav class="bottom-nav d-flex justify-content-around align-items-center">
-            <a href="#" class="active"><i data-feather="home"></i></a>
-            <a href="#"><i data-feather="calendar"></i></a>
-            <a href="#"><i data-feather="credit-card"></i></a>
-            <a href="#"><i data-feather="user"></i></a>
-          </nav>
-        </div><!-- /iphone -->
+          <div class="form-box">
+            <label>Going to</label>
+            <input type="text" placeholder="Enter hotel destination" />
+            <label>Check-in Date</label>
+            <input type="date" />
+            <label>Check-out Date</label>
+            <input type="date" />
+            <label>Travelers</label>
+            <select>
+              <option>1 Adult</option>
+              <option>2 Adults</option>
+              <option>Family</option>
+            </select>
+            <button class="submit">Search Stays</button>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <button>Home</button>
+          <button>Bookings</button>
+          <button>Explore</button>
+          <button>Account</button>
+        </div>
       </div>
-    </section>
-
-    <!-- ===== WORDPRESS-STYLE FOOTER ===== -->
-    <footer class="wp-footer">
-      <div class="container-lg py-4 d-flex flex-wrap justify-content-between gap-3">
-        <ul class="list-unstyled">
-          <li><strong>About&nbsp;Us</strong></li>
-          <li><a href="#">List your property</a></li>
-        </ul>
-        <ul class="list-unstyled">
-          <li><strong>Cities</strong></li>
-          <li><a href="#">Chicago</a></li><li><a href="#">Orlando</a></li><li><a href="#">Miami</a></li><li><a href="#">New York</a></li>
-        </ul>
-        <ul class="list-unstyled">
-          <li><strong>Legal</strong></li>
-          <li><a href="#">Terms of Use</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Cookie Policy</a></li>
-        </ul>
-        <ul class="list-unstyled">
-          <li><strong>Follow&nbsp;Us</strong></li>
-          <li><a href="#">Instagram</a></li><li><a href="#">Blog</a></li>
-        </ul>
-      </div>
-      <p class="mb-0 small text-center py-2 border-top">© 2025 WordPress</p>
-    </footer>
-  </div><!-- /page -->
-
-  <!-- Feather icons init -->
-  <script>feather.replace()</script>
-
-  <!-- Simple JS to switch tabs -->
-  <script src="scripts.js"></script>
+    </div>
+  </div>
+  <footer>
+    © 2025 505 Travel. Proudly powered by WordPress.
+  </footer>
 </body>
 </html>
