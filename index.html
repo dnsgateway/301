@@ -1,524 +1,413 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>505 Stays – Book Hotels & Packages</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
-  <!-- Icons (Feather) -->
-  <script src="https://unpkg.com/feather-icons"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>505 Travel – Discover the world, your way</title>
+
+  <!-- Google Fonts & Font Awesome for icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
   <style>
-    :root {
-      --primary-yellow: #ffe25c;
-      --primary-yellow-dark: #ffd200;
-      --gradient-bg: linear-gradient(135deg, #0a2540 0%, #512da8 80%, #ffe25c 100%);
-      --shadow: 0 4px 16px rgba(10, 37, 64, 0.16);
+    /* ----------  GLOBAL  ---------- */
+    :root{
+      --brand-yellow:#FFD400;
+      --brand-dark:#222;
+      --gradient-start:#11172B;
+      --gradient-end:#3A476A;
+      --panel-bg:#FFFFFF;
+      --input-bg:#F7F7F7;
+      --border:#E5E5E5;
+      --radius:10px;
     }
-    * {
-      box-sizing: border-box;
+    *{box-sizing:border-box;padding:0;margin:0}
+    html,body{height:100%;font-family:'Poppins',sans-serif}
+    body{
+      background:linear-gradient(135deg,var(--gradient-start),var(--gradient-end));
+      color:#fff;
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
     }
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: 'Inter', Arial, sans-serif;
-      background: var(--gradient-bg);
-      color: #222;
+    a{color:inherit;text-decoration:none}
+
+    /* ----------  SPLIT LAYOUT  ---------- */
+    .wrapper{
+      flex:1 0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:60px 5vw;
+      gap:5vw;
+      flex-wrap:wrap;
     }
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+    .info-panel{
+      flex:1 1 420px;
+      max-width:480px;
     }
-    .container {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: flex-start;
-      height: 100vh;
-      max-width: 1400px;
-      margin: 0 auto;
-      gap: 32px;
-      padding: 48px 32px 0 32px;
+    .info-panel h1{
+      font-size:3rem;
+      font-weight:700;
+      line-height:1.1;
+      margin-bottom:20px;
     }
-    /* Left (Intro) */
-    .intro {
-      flex: 1 1 420px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      color: #fff;
-      z-index: 1;
-      max-width: 470px;
-      padding-top: 56px;
+    .info-panel p{
+      font-size:1.1rem;
+      margin-bottom:30px;
+      color:#EDEDED;
     }
-    .intro h1 {
-      font-size: 2.6rem;
-      font-weight: 900;
-      margin-bottom: 18px;
-      letter-spacing: -1px;
-      text-shadow: 0 3px 24px rgba(10,37,64,0.2);
+    .cta-btn{
+      display:inline-block;
+      padding:14px 32px;
+      font-size:1rem;
+      font-weight:600;
+      border:none;
+      border-radius:50px;
+      background:var(--brand-yellow);
+      color:var(--brand-dark);
+      cursor:pointer;
+      transition:all .25s;
     }
-    .intro p {
-      font-size: 1.18rem;
-      font-weight: 400;
-      margin-bottom: 26px;
-      color: #f9f9f9;
-      line-height: 1.5;
-      text-shadow: 0 1px 6px rgba(80,80,80,0.1);
+    .cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 16px rgba(0,0,0,.25)}
+    .store-badges{
+      display:flex;
+      gap:14px;
+      margin-top:40px;
     }
-    .app-store-buttons {
-      display: flex;
-      gap: 18px;
-      margin-bottom: 30px;
+    .store-badges img{
+      height:48px;
+      width:auto;
+      object-fit:contain;
     }
-    .app-store-buttons img {
-      height: 44px;
-      transition: filter 0.2s;
-      filter: drop-shadow(0 1px 8px rgba(0,0,0,0.16));
-      cursor: pointer;
+
+    /* ----------  PHONE MOCK-UP  ---------- */
+    .mockup-wrapper{
+      flex:1 1 340px;
+      display:flex;
+      justify-content:center;
+      perspective:1000px;
     }
-    .intro .main-action {
-      margin-top: 10px;
-      padding: 16px 36px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      background: var(--primary-yellow);
-      color: #222;
-      border: none;
-      border-radius: 8px;
-      box-shadow: var(--shadow);
-      cursor: pointer;
-      transition: background 0.18s;
+    .phone{
+      width:280px;
+      border:14px solid #000;
+      border-radius:36px;
+      box-shadow:0 30px 50px rgba(0,0,0,.6);
+      background:#000;
+      transform:rotateY(-6deg);
     }
-    .intro .main-action:hover {
-      background: var(--primary-yellow-dark);
+    .speaker{height:6px;width:60px;background:#222;border-radius:3px;margin:10px auto 0}
+    .screen{
+      height:560px;
+      overflow:hidden;
+      border-radius:20px;
+      background:var(--panel-bg);
+      position:relative;
     }
-    /* Mockup */
-    .mockup-container {
-      flex: 1 1 400px;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      min-width: 350px;
-      z-index: 2;
+
+    /* ----------  IN-APP UI  ---------- */
+    /* top bar */
+    .topbar{
+      padding:10px 16px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-size:.9rem;
+      font-weight:500;
     }
-    .iphone-frame {
-      position: relative;
-      width: 375px;
-      height: 790px;
-      border-radius: 38px;
-      background: #fff;
-      box-shadow: 0 8px 44px rgba(0,0,0,0.20);
-      overflow: hidden;
-      border: 4px solid #222;
-      display: flex;
-      flex-direction: column;
+    .topbar .logo{font-size:1.3rem;font-weight:700}
+    .lang-btn{
+      margin-left:auto;
+      background:var(--brand-yellow);
+      color:#000;
+      padding:4px 10px;
+      border-radius:6px;
+      font-size:.8rem;
     }
-    /* iPhone notch and status bar */
-    .notch-bar {
-      height: 36px;
-      background: #fff;
-      display: flex;
-      align-items: center;
-      padding: 0 18px;
-      justify-content: space-between;
-      font-size: 1.08rem;
-      font-weight: 700;
-      color: #111;
+    /* HERO */
+    .hero{
+      position:relative;
+      height:180px;
+      background:url('https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=800&q=60') center/cover;
     }
-    .notch-bar .brand {
-      font-weight: 900;
-      font-size: 1.22rem;
-      letter-spacing: -0.5px;
+    .hero::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,.45);
     }
-    .notch-bar .nav-links {
-      margin-left: 18px;
-      display: flex;
-      gap: 18px;
-      font-size: 1.04rem;
-      font-weight: 500;
-      color: #222;
+    .hero-content{
+      position:relative;
+      z-index:2;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      padding:0 22px;
+      color:#fff;
     }
-    .notch-bar .lang-btn {
-      background: var(--primary-yellow);
-      color: #222;
-      border: none;
-      border-radius: 9px;
-      padding: 4px 14px;
-      margin-left: 18px;
-      font-weight: 600;
-      cursor: pointer;
+    .hero h2{font-size:1.4rem;font-weight:700;line-height:1.2;margin-bottom:6px}
+    .hero h3{font-size:1rem;font-weight:500;margin-bottom:18px}
+    .book-btn{
+      background:var(--brand-yellow);
+      color:#000;
+      padding:10px 22px;
+      border-radius:6px;
+      font-weight:600;
+      font-size:.95rem;
+      border:none;
     }
-    /* Hero Image + Title */
-    .hero-section {
-      position: relative;
-      width: 100%;
-      height: 180px;
-      background: linear-gradient(180deg, rgba(20,20,40,0.30) 10%, rgba(20,20,40,0.56) 85%), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80') center center/cover no-repeat;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      align-items: center;
+
+    /* SEARCH CARD */
+    .search-card{
+      background:#fff;
+      color:#000;
+      border-radius:var(--radius);
+      position:relative;
+      top:-28px;
+      margin:0 14px;
+      padding:24px 18px 18px;
+      box-shadow:0 8px 20px rgba(0,0,0,.15);
+      font-size:.88rem;
     }
-    .hero-text {
-      width: 100%;
-      padding: 30px 16px 12px 16px;
-      color: #fff;
-      text-align: center;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      z-index: 3;
+    .tab-switcher{
+      display:flex;
+      border-bottom:2px solid var(--border);
+      margin:-4px -18px 18px;
     }
-    .hero-text h2 {
-      font-size: 1.6rem;
-      font-weight: 900;
-      margin-bottom: 10px;
-      letter-spacing: -1px;
-      line-height: 1.1;
-      text-shadow: 0 2px 24px rgba(0,0,0,0.15);
+    .tab-switcher button{
+      flex:1;
+      padding:14px 0;
+      border:none;
+      background:transparent;
+      font-weight:600;
+      cursor:pointer;
     }
-    .hero-text p {
-      font-size: 1.08rem;
-      margin-bottom: 17px;
-      color: #fafafa;
+    .tab-switcher .active{
+      color:var(--brand-dark);
+      border-bottom:4px solid var(--brand-dark);
     }
-    .hero-text .btn-book {
-      background: var(--primary-yellow);
-      border: none;
-      color: #222;
-      font-weight: 700;
-      border-radius: 8px;
-      padding: 11px 32px;
-      font-size: 1rem;
-      box-shadow: 0 2px 12px rgba(90,90,30,0.10);
-      cursor: pointer;
-      transition: background 0.15s;
+    .form-group{margin-bottom:14px}
+    .form-group label{display:block;margin-bottom:4px;font-weight:500}
+    .form-group input,
+    .form-group select{
+      width:100%;
+      padding:10px 12px;
+      background:var(--input-bg);
+      border:1px solid var(--border);
+      border-radius:6px;
+      font-size:.85rem;
     }
-    .hero-text .btn-book:hover {
-      background: var(--primary-yellow-dark);
+    .search-btn{
+      width:100%;
+      background:var(--brand-yellow);
+      padding:12px;
+      border-radius:6px;
+      border:none;
+      font-weight:600;
+      font-size:.95rem;
+      cursor:pointer;
     }
-    /* Tab Panel */
-    .tab-panel {
-      background: #fff;
-      margin-top: -28px;
-      border-radius: 20px;
-      box-shadow: 0 2px 14px rgba(10,37,64,0.12);
-      padding: 18px 16px 20px 16px;
-      width: 93%;
-      margin-left: auto;
-      margin-right: auto;
-      z-index: 3;
-      position: relative;
-      display: flex;
-      flex-direction: column;
+
+    /* BOTTOM NAV */
+    .bottom-nav{
+      position:absolute;
+      bottom:0;
+      left:0;
+      right:0;
+      height:56px;
+      background:#fff;
+      display:flex;
+      justify-content:space-around;
+      align-items:center;
+      border-top:1px solid var(--border);
     }
-    .tab-header {
-      display: flex;
-      border-bottom: 2px solid #f5f5f5;
-      margin-bottom: 10px;
+    .bottom-nav button{
+      background:none;
+      border:none;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:2px;
+      font-size:.65rem;
+      color:#777;
+      cursor:pointer;
     }
-    .tab {
-      font-weight: 700;
-      font-size: 1.1rem;
-      flex: 1;
-      text-align: center;
-      cursor: pointer;
-      padding: 8px 0;
-      border-bottom: 2px solid transparent;
-      color: #222;
-      background: none;
-      outline: none;
-      transition: border 0.2s, color 0.2s;
+    .bottom-nav .active{color:var(--brand-dark)}
+    .bottom-nav i{font-size:1.2rem}
+
+    /* ----------  FOOTER  ---------- */
+    footer{
+      background:#111;
+      color:#aaa;
+      text-align:center;
+      padding:40px 20px 60px;
+      font-size:.85rem;
+      line-height:1.6;
     }
-    .tab.active {
-      border-bottom: 2.5px solid var(--primary-yellow);
-      color: #222;
+
+    /* ----------  RESPONSIVE  ---------- */
+    @media(max-width:960px){
+      .phone{transform:none}
+      .wrapper{padding:50px 6vw}
     }
-    /* Form fields */
-    .tab-content {
-      margin-top: 4px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .input-label {
-      font-size: 1.01rem;
-      font-weight: 600;
-      margin-bottom: 3px;
-      color: #252525;
-    }
-    .form-input, .form-select {
-      width: 100%;
-      padding: 11px 10px;
-      font-size: 1rem;
-      border-radius: 8px;
-      border: 1.3px solid #eee;
-      background: #fafafa;
-      font-family: inherit;
-      margin-bottom: 2px;
-      outline: none;
-      transition: border 0.15s;
-    }
-    .form-input:focus, .form-select:focus {
-      border: 1.3px solid var(--primary-yellow-dark);
-      background: #fff;
-    }
-    .search-btn {
-      width: 100%;
-      background: var(--primary-yellow);
-      color: #222;
-      border: none;
-      border-radius: 8px;
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-top: 10px;
-      padding: 13px 0;
-      cursor: pointer;
-      box-shadow: var(--shadow);
-      transition: background 0.16s;
-    }
-    .search-btn:hover {
-      background: var(--primary-yellow-dark);
-    }
-    /* Browse section */
-    .browse-section {
-      padding: 16px 0 6px 0;
-    }
-    .browse-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin: 0 0 11px 10px;
-      color: #232323;
-    }
-    .property-types {
-      display: flex;
-      gap: 12px;
-      padding: 0 10px;
-    }
-    .property-type-card {
-      flex: 1 1 80px;
-      background: #f4f4f6;
-      border-radius: 11px;
-      overflow: hidden;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(10,37,64,0.07);
-      cursor: pointer;
-      transition: box-shadow 0.16s;
-    }
-    .property-type-card img {
-      width: 100%;
-      height: 58px;
-      object-fit: cover;
-    }
-    .property-type-card span {
-      display: block;
-      font-size: 1.04rem;
-      font-weight: 600;
-      color: #333;
-      padding: 6px 0 9px 0;
-    }
-    .property-type-card:hover {
-      box-shadow: 0 6px 16px rgba(10,37,64,0.18);
-    }
-    /* Bottom Nav */
-    .bottom-nav {
-      margin-top: auto;
-      background: #f7f7fa;
-      padding: 13px 0 8px 0;
-      border-top: 1.4px solid #ececec;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      z-index: 10;
-    }
-    .nav-icon {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 0.84rem;
-      color: #646464;
-      transition: color 0.13s;
-      cursor: pointer;
-    }
-    .nav-icon.active, .nav-icon:hover {
-      color: var(--primary-yellow-dark);
-    }
-    .nav-icon svg {
-      margin-bottom: 3px;
-      width: 22px;
-      height: 22px;
-    }
-    /* Responsive */
-    @media (max-width: 1080px) {
-      .container {
-        flex-direction: column;
-        align-items: center;
-        gap: 38px;
-        padding-top: 18px;
-      }
-      .intro, .mockup-container {
-        max-width: 98vw;
-      }
-    }
-    @media (max-width: 700px) {
-      .container {
-        padding: 18px 3vw 0 3vw;
-      }
-      .iphone-frame {
-        width: 98vw;
-        height: 650px;
-        min-width: unset;
-      }
-      .mockup-container {
-        min-width: unset;
-      }
-    }
-    /* Footer */
-    .footer {
-      width: 100vw;
-      background: #222;
-      color: #fff;
-      text-align: center;
-      font-size: 1.06rem;
-      padding: 24px 0 14px 0;
-      font-family: 'Inter', Arial, sans-serif;
-      letter-spacing: 0.5px;
-      margin-top: 24px;
-      box-shadow: 0 -2px 12px rgba(10,37,64,0.10);
-    }
-    .footer a {
-      color: #ffe25c;
-      text-decoration: underline;
-      margin: 0 5px;
-      font-weight: 500;
+    @media(max-width:660px){
+      .wrapper{flex-direction:column;gap:60px}
+      .info-panel{text-align:center;padding-right:0}
+      .info-panel h1{font-size:2.4rem}
+      .store-badges{justify-content:center}
     }
   </style>
 </head>
 <body>
-  <main class="container">
-    <!-- LEFT: Intro -->
-    <section class="intro">
-      <h1>Discover the world, your way</h1>
-      <p>Book last minute hotels, stays, and curated travel packages. Enjoy great rates, verified reviews, and instant booking. <br>
-        <strong>Available now on iOS & Android.</strong>
-      </p>
-      <div class="app-store-buttons">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Available_on_the_App_Store_%28black%29.png" alt="Apple App Store" />
-        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play Store" />
+
+  <!--  ======  MAIN CONTENT  ======  -->
+  <section class="wrapper">
+
+    <!--  LEFT / MARKETING COPY  -->
+    <div class="info-panel">
+      <h1>Discover the world, <br>your way</h1>
+      <p>505 is the fastest way to book last-minute hotels, unique stays & curated experiences - straight from your phone.</p>
+      <button class="cta-btn" id="demoBtn">Try the Interactive Demo</button>
+
+      <!-- store badges -->
+      <div class="store-badges">
+        <a href="#"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store"></a>
+        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play"></a>
       </div>
-      <button class="main-action" onclick="alert('Interact with the app prototype on the right!')">
-        Try the Interactive Prototype &rarr;
-      </button>
-    </section>
-    <!-- RIGHT: App Mockup -->
-    <section class="mockup-container">
-      <div class="iphone-frame">
-        <!-- Top Bar -->
-        <div class="notch-bar">
-          <span class="brand">505</span>
-          <span class="nav-links">
+    </div>
+
+    <!--  RIGHT / PHONE MOCK-UP  -->
+    <div class="mockup-wrapper">
+      <div class="phone" id="phone">
+        <div class="speaker"></div>
+        <div class="screen">
+
+          <!-- Top nav -->
+          <div class="topbar">
+            <span class="logo">505</span>
             <span>Stays</span>
             <span>Experiences</span>
-            <span>Mobile app</span>
-          </span>
-          <button class="lang-btn">EN</button>
-        </div>
-        <!-- Hero image + CTA -->
-        <div class="hero-section">
-          <div class="hero-text">
-            <h2>Discover the world, <br>your way</h2>
-            <p>Book Last Minute Hotels and Stays</p>
-            <button class="btn-book" onclick="alert('Book Now Clicked!')">Book Now</button>
+            <span>Mobile&nbsp;app</span>
+            <span class="lang-btn">EN</span>
           </div>
-        </div>
-        <!-- Tabs and form -->
-        <div class="tab-panel">
-          <div class="tab-header">
-            <button class="tab active" onclick="switchTab('stays', this)">Stays</button>
-            <button class="tab" onclick="switchTab('packages', this)">Travel Packages</button>
-          </div>
-          <div class="tab-content" id="stays-content">
-            <div>
-              <label class="input-label" for="dest">Going to</label>
-              <input class="form-input" id="dest" type="text" placeholder="Enter hotel destination" />
+
+          <!-- Hero -->
+          <div class="hero">
+            <div class="hero-content">
+              <h2>Discover the world,<br>your way</h2>
+              <h3>Book Last Minute Hotels and Stays</h3>
+              <button class="book-btn">Book Now</button>
             </div>
-            <div style="display: flex; gap: 10px;">
-              <div style="flex:1;">
-                <label class="input-label" for="in-date">Check-in Date</label>
-                <input class="form-input" id="in-date" type="date" />
+          </div>
+
+          <!-- Search widget -->
+          <div class="search-card">
+            <div class="tab-switcher">
+              <button id="staysTab" class="active">Stays</button>
+              <button id="packagesTab">Travel Packages</button>
+            </div>
+
+            <form id="staysForm">
+              <div class="form-group">
+                <label for="dest">Going to</label>
+                <input type="text" id="dest" placeholder="Enter hotel destination">
               </div>
-              <div style="flex:1;">
-                <label class="input-label" for="out-date">Check-out Date</label>
-                <input class="form-input" id="out-date" type="date" />
+              <div class="form-group">
+                <label>Check-in Date</label>
+                <input type="date" id="checkin">
               </div>
-            </div>
-            <div>
-              <label class="input-label" for="travelers">Travelers</label>
-              <select class="form-select" id="travelers">
-                <option>1 Adult</option>
-                <option>2 Adults</option>
-                <option>Family</option>
-              </select>
-            </div>
-            <button class="search-btn" onclick="alert('Search Stays!')">Search Stays</button>
+              <div class="form-group">
+                <label>Check-out Date</label>
+                <input type="date" id="checkout">
+              </div>
+              <div class="form-group">
+                <label>Travelers</label>
+                <select id="travellers">
+                  <option>1 Adult</option>
+                  <option>2 Adults</option>
+                  <option>Family</option>
+                </select>
+              </div>
+              <button type="button" class="search-btn">Search Stays</button>
+            </form>
+
+            <!-- dummy packages form -->
+            <form id="packagesForm" style="display:none">
+              <div class="form-group">
+                <label>Leaving from</label>
+                <input type="text" placeholder="City or airport">
+              </div>
+              <div class="form-group">
+                <label>Going to</label>
+                <input type="text" placeholder="Destination">
+              </div>
+              <div class="form-group">
+                <label>Departure</label>
+                <input type="date">
+              </div>
+              <div class="form-group">
+                <label>Return</label>
+                <input type="date">
+              </div>
+              <button type="button" class="search-btn">Find Packages</button>
+            </form>
           </div>
-          <div class="tab-content" id="packages-content" style="display:none;">
-            <div>
-              <label class="input-label" for="package-dest">Going to</label>
-              <input class="form-input" id="package-dest" type="text" placeholder="Enter travel destination" />
-            </div>
-            <div>
-              <label class="input-label" for="package-type">Package Type</label>
-              <select class="form-select" id="package-type">
-                <option>All Inclusive</option>
-                <option>Adventure</option>
-                <option>Luxury</option>
-                <option>Family</option>
-              </select>
-            </div>
-            <button class="search-btn" onclick="alert('Search Packages!')">Search Packages</button>
+
+          <!-- Bottom navigation -->
+          <div class="bottom-nav">
+            <button class="active"><i class="fa-solid fa-house"></i><span>Home</span></button>
+            <button><i class="fa-solid fa-magnifying-glass"></i><span>Search</span></button>
+            <button><i class="fa-regular fa-bookmark"></i><span>Trips</span></button>
+            <button><i class="fa-regular fa-user"></i><span>Profile</span></button>
           </div>
-        </div>
-        <!-- Browse property types -->
-        <div class="browse-section">
-          <div class="browse-title">Browse by property type</div>
-          <div class="property-types">
-            <div class="property-type-card"><img src="https://i.imgur.com/QdeOe99.jpg"><span>Hotels</span></div>
-            <div class="property-type-card"><img src="https://i.imgur.com/EGypQ2H.jpg"><span>Apartments</span></div>
-            <div class="property-type-card"><img src="https://i.imgur.com/0O9VpRZ.jpg"><span>Resorts</span></div>
-          </div>
-        </div>
-        <!-- Bottom nav -->
-        <div class="bottom-nav">
-          <div class="nav-icon active"><i data-feather="home"></i><span>Home</span></div>
-          <div class="nav-icon"><i data-feather="search"></i><span>Search</span></div>
-          <div class="nav-icon"><i data-feather="calendar"></i><span>Trips</span></div>
-          <div class="nav-icon"><i data-feather="user"></i><span>Profile</span></div>
         </div>
       </div>
-    </section>
-  </main>
-  <!-- Footer -->
-  <footer class="footer">
-    &copy; 2025 505 Travel. Powered by <a href="#">WordPress</a>. All rights reserved.
+    </div>
+
+  </section>
+
+  <!--  ======  FOOTER  ======  -->
+  <footer>
+    © 2025 505 Travel. Proudly powered by WordPress • Theme: 505 by Mel.
   </footer>
+
+  <!--  ======  SCRIPTS  ======  -->
   <script>
-    feather.replace();
+    /* Tab logic */
+    const staysTab=document.getElementById('staysTab');
+    const packagesTab=document.getElementById('packagesTab');
+    const staysForm=document.getElementById('staysForm');
+    const packagesForm=document.getElementById('packagesForm');
 
-    function switchTab(tabName, el) {
-      document.querySelectorAll('.tab').forEach(btn => btn.classList.remove('active'));
-      el.classList.add('active');
+    staysTab.onclick=()=>switchTab('stays');
+    packagesTab.onclick=()=>switchTab('packages');
 
-      document.getElementById('stays-content').style.display = tabName === 'stays' ? 'block' : 'none';
-      document.getElementById('packages-content').style.display = tabName === 'packages' ? 'block' : 'none';
+    function switchTab(tab){
+      if(tab==='stays'){
+        staysTab.classList.add('active');
+        packagesTab.classList.remove('active');
+        staysForm.style.display='block';
+        packagesForm.style.display='none';
+      }else{
+        packagesTab.classList.add('active');
+        staysTab.classList.remove('active');
+        packagesForm.style.display='block';
+        staysForm.style.display='none';
+      }
+    }
+
+    /* Bottom-nav highlight */
+    document.querySelectorAll('.bottom-nav button').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        document.querySelector('.bottom-nav .active').classList.remove('active');
+        btn.classList.add('active');
+      });
+    });
+
+    /* “Try Demo” scroll */
+    document.getElementById('demoBtn').onclick=()=>{
+      document.getElementById('phone').scrollIntoView({behavior:'smooth',block:'center'});
     }
   </script>
 </body>
