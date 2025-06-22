@@ -9,96 +9,98 @@
   <script src="https://unpkg.com/feather-icons"></script>
 
   <style>
-    /* =====  THEME  ===== */
+    /* ----------  GLOBAL & LAYOUT ---------- */
     :root{
-      --brand-yellow:#FFD936;
-      --brand-black:#000000;
+      --brand-yellow:#FAD93B;
+      --brand-purple:#5111FF;
+      --brand-blue:#00AEEF;
+      --wp-text:#F2F2F2;
+      --phone-bg:#111;
+      --phone-radius:34px;
       --ui-gray:#f7f7f7;
       --ui-border:#e0e0e0;
-      --ui-shadow:0 6px 20px rgba(0,0,0,.14);
+      --ui-shadow:0 6px 18px rgba(0,0,0,.1);
     }
     *{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
-
-    /* =====  GRADIENT BACKGROUND  ===== */
     body{
       min-height:100vh;
-      background:linear-gradient(135deg,var(--brand-black) 0%, var(--brand-yellow) 100%);
+      background:linear-gradient(135deg,var(--brand-purple) 0%,var(--brand-blue) 100%);
+      color:#fff;
       display:flex;
       flex-direction:column;
-      color:#fff;
     }
-
     main{
       flex:1;
       display:flex;
       flex-wrap:wrap;
+      padding:40px 6vw;
+      gap:48px;
       align-items:center;
       justify-content:center;
-      gap:48px;
-      padding:40px 6vw;
     }
-
-    /* =====  MARKETING PANEL  ===== */
+    /* ----------  LEFT PANEL ---------- */
     .pitch{
       flex:1 1 340px;
       max-width:480px;
     }
     .pitch h1{
-      font-size:clamp(2.2rem,4vw,3.3rem);
+      font-size:clamp(2.2rem,4vw,3.4rem);
       line-height:1.1;
-      margin-bottom:22px;
+      margin-bottom:20px;
     }
     .pitch p{
       font-size:1.15rem;
-      margin-bottom:34px;
+      margin-bottom:32px;
       opacity:.9;
     }
     .btn-primary{
       display:inline-block;
       background:var(--brand-yellow);
-      color:#000;
-      padding:14px 32px;
+      padding:14px 30px;
       border-radius:8px;
+      color:#000;
       font-weight:600;
       text-decoration:none;
-      margin-bottom:46px;
-      transition:.18s;
+      margin-bottom:40px;
+      transition:.2s;
     }
-    .btn-primary:hover{filter:brightness(.9)}
+    .btn-primary:hover{filter:brightness(.92)}
     .store-badges{
       display:flex;
       gap:18px;
-      margin-bottom:62px;
+      margin-bottom:60px;
     }
-    .store-badges img{height:52px;object-fit:contain}
-
-    /* =====  iPHONE 16 MOCK-UP  ===== */
+    .store-badges img{
+      height:52px;
+      object-fit:contain;
+    }
+    /* ----------  PHONE MOCK-UP ---------- */
     .device{
       flex:1 1 300px;
-      max-width:390px;
-      aspect-ratio:9/19.5;           /* roughly iPhone 16 */
-      background:url('https://i.imgur.com/lt9ZHz9.png') center/contain no-repeat; /* Phone frame PNG */
+      max-width:380px;
+      aspect-ratio:9/19;          /* keeps phone shape */
+      border:8px solid #000;
+      border-radius:var(--phone-radius);
+      background:var(--phone-bg);
       position:relative;
-      /* shadow to lift the phone */
-      filter:drop-shadow(0 20px 38px rgba(0,0,0,.45));
+      box-shadow:0 18px 38px rgba(0,0,0,.45);
+      overflow:hidden;
     }
-
-    /* “screen” fits perfectly inside phone frame PNG (adjusted percentages) */
-    .screen{
+    .speaker-notch{
       position:absolute;
-      top:9.2%;   left:7%;
-      width:86%;
-      height:83.6%;
-      background:#fff;
-      border-radius:28px;
-      overflow-y:auto;
-      -webkit-overflow-scrolling:touch;
-      color:#000;
+      top:12px;left:50%;
+      transform:translateX(-50%);
+      width:100px;height:22px;
+      background:#000;border-radius:12px;
     }
-
-    /* =====  TOP STATUS / NAV  ===== */
+    .screen{
+      position:absolute;inset:44px 0 44px 0;  /* bezel */
+      background:#fff;overflow-y:auto;
+      -webkit-overflow-scrolling:touch;
+    }
+    /* ----------  STATUS & NAV BAR ---------- */
     .status-bar{
-      padding:12px 18px;
+      padding:10px 18px;
       display:flex;
       justify-content:space-between;
       align-items:center;
@@ -116,236 +118,275 @@
       color:#000;
       padding:4px 10px;
       border-radius:6px;
-      font-size:.82rem;
+      font-size:.85rem;
       font-weight:600;
     }
-
-    /* =====  HERO  ===== */
+    /* ----------  HERO ---------- */
     .hero{
-      height:240px;
       position:relative;
-      background:url('https://images.unsplash.com/photo-1603084040761-50d58789ab62?fit=crop&w=800&q=80') center/cover;
+      height:240px;
+      background:url('https://images.unsplash.com/photo-1500048993959-d221b6868a6b?auto=format&fit=crop&w=500&q=80') center/cover;
     }
     .hero::after{
       content:'';
       position:absolute;inset:0;
-      background:linear-gradient(to bottom,rgba(0,0,0,.05),rgba(0,0,0,.65));
+      background:linear-gradient(to bottom,rgba(0,0,0,.05) 0%, rgba(0,0,0,.6) 100%);
     }
     .hero-content{
-      position:absolute;inset:0;
+      position:absolute;
+      inset:0;
       display:flex;
       flex-direction:column;
       justify-content:center;
       align-items:center;
       text-align:center;
+      padding:0 26px;
       color:#fff;
-      padding:0 24px;
     }
     .hero-content h2{
-      font-size:1.85rem;line-height:1.2;
-      margin-bottom:8px;font-weight:700;
+      font-size:1.9rem;font-weight:700;line-height:1.2;
+      margin-bottom:8px;
     }
     .hero-content p{font-size:.95rem;margin-bottom:18px}
-    .book-now{
+    .hero-content .book-now{
       background:var(--brand-yellow);
-      color:#000;font-weight:600;
-      padding:10px 24px;border:none;border-radius:6px;
+      color:#000;
+      padding:10px 24px;
+      border:none;
+      border-radius:6px;
+      font-weight:600;
     }
-
-    /* =====  SEARCH CARD  ===== */
+    /* ----------  SEARCH CARD ---------- */
     .card{
       width:90%;
-      margin:-58px auto 30px;
+      margin:-60px auto 30px;
       background:#fff;
       border-radius:14px;
       box-shadow:var(--ui-shadow);
       padding:24px 20px;
+      color:#000;
     }
     .tabs{
-      display:flex;border-bottom:2px solid var(--ui-border);margin-bottom:18px;
+      display:flex;
+      border-bottom:2px solid var(--ui-border);
+      margin-bottom:18px;
     }
     .tab{
-      flex:1;text-align:center;font-weight:600;
-      padding:8px 0;cursor:pointer;
+      flex:1;text-align:center;
+      padding:8px 0;
+      font-weight:600;
+      cursor:pointer;
       border-bottom:3px solid transparent;
-      transition:.18s;
+      transition:.2s;
     }
-    .tab.active{border-color:#000}
-    label{font-size:.8rem;font-weight:600;display:block;margin:12px 0 6px}
+    .tab.active{border-color:#000;}
+    label{font-size:.81rem;font-weight:600;display:block;margin:12px 0 6px}
     input,select{
-      width:100%;padding:10px 12px;
-      border:1px solid var(--ui-border);border-radius:8px;font-size:.9rem;
+      width:100%;
+      padding:10px 12px;
+      border:1px solid var(--ui-border);
+      border-radius:8px;
+      font-size:.9rem;
     }
     .search-btn{
-      margin-top:22px;width:100%;
-      background:var(--brand-yellow);border:none;border-radius:8px;
-      padding:12px;font-weight:600;
+      margin-top:22px;
+      width:100%;
+      background:var(--brand-yellow);
+      border:none;border-radius:8px;
+      padding:12px;
+      font-weight:600;
     }
-
-    /* =====  PROPERTY PREVIEW  ===== */
-    .property-wrap{padding:0 20px}
-    .property-title{font-size:1.05rem;font-weight:600;margin-bottom:6px}
+    /* ----------  PROPERTY PREVIEW (placeholder) ---------- */
     .property-scroll{
-      display:flex;gap:12px;overflow-x:auto;padding-bottom:22px;
+      display:flex;
+      overflow-x:auto;
+      gap:12px;
+      padding:14px 4px 22px 4px;
     }
     .property-scroll img{
-      width:140px;height:100px;border-radius:10px;object-fit:cover;flex:0 0 auto;
+      width:140px;height:100px;border-radius:10px;object-fit:cover;
+      flex:0 0 auto;
     }
-
-    /* =====  BOTTOM NAV  ===== */
+    /* ----------  BOTTOM NAV ---------- */
     .bottom-nav{
       position:sticky;bottom:0;left:0;right:0;
-      border-top:1px solid var(--ui-border);background:#fff;
-      display:flex;justify-content:space-around;padding:8px 0;
+      border-top:1px solid var(--ui-border);
+      background:#fff;
+      display:flex;justify-content:space-around;
+      padding:8px 0;
     }
     .bottom-nav button{
       background:none;border:none;cursor:pointer;
       display:flex;flex-direction:column;align-items:center;
       font-size:.7rem;font-weight:600;color:#555;
     }
-    .bottom-nav .active{color:#000}
+    .bottom-nav .active{color:#000;}
     .bottom-nav svg{width:22px;height:22px;margin-bottom:2px}
-
-    /* =====  FOOTER  ===== */
+    /* ----------  FOOTER ---------- */
     footer{
-      background:#0B0B27;color:#F2F2F2;
-      display:flex;justify-content:space-between;align-items:center;
-      flex-wrap:wrap;gap:18px;padding:22px 6vw;font-size:.9rem;
+      background:#0B0B27;
+      color:var(--wp-text);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:22px 6vw;
+      font-size:.9rem;
+      flex-wrap:wrap;
+      gap:18px;
     }
-    footer img{height:34px;object-fit:contain}
-    footer a{color:#F2F2F2;text-decoration:none;margin-left:18px}
+    footer img{height:34px}
+    footer a{color:var(--wp-text);text-decoration:none;margin-left:18px}
   </style>
 </head>
 
 <body>
-<main>
-  <!-- ===  LEFT PANEL  === -->
-  <section class="pitch">
-    <h1>Discover the<br>world, your way</h1>
-    <p>Book last-minute hotels & stays with our lightning-fast mobile app.</p>
+  <main>
+    <!-- ======  LEFT PANEL  ====== -->
+    <section class="pitch">
+      <h1>Discover the<br>world, your way</h1>
+      <p>Book Last Minute Hotels and Stays with our easy-to-use app.</p>
 
-    <a href="#prototype" class="btn-primary" id="interactBtn">INTERACT WITH PROTOTYPE</a>
+      <a href="#prototype" class="btn-primary" id="interactBtn">INTERACT WITH PROTOTYPE</a>
 
-    <div class="store-badges">
-      <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
-           alt="Get it on Google Play">
-      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-           alt="Download on the App Store">
-    </div>
-  </section>
-
-  <!-- ===  iPHONE 16 MOCK-UP  === -->
-  <section class="device" id="prototype">
-    <!-- “Live” screen -->
-    <div class="screen">
-      <!-- Top status & nav -->
-      <div class="status-bar">
-        <span>505</span>
-        <nav>
-          <a href="#">Stays</a>
-          <a href="#">Experiences</a>
-          <a href="#">Mobile app</a>
-        </nav>
-        <span class="lang-pill">EN</span>
+      <div class="store-badges">
+        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
+             alt="Get it on Google Play">
+        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+             alt="Download on the App Store">
       </div>
+    </section>
 
-      <!-- Hero -->
-      <div class="hero">
-        <div class="hero-content">
-          <h2>Discover the world,<br>your way</h2>
-          <p>Book Last Minute Hotels and Stays</p>
-          <button class="book-now">Book Now</button>
-        </div>
-      </div>
+    <!-- ======  PHONE MOCK-UP  ====== -->
+    <section class="device" id="prototype">
+      <div class="speaker-notch"></div>
 
-      <!-- Search / Tabs -->
-      <div class="card">
-        <div class="tabs">
-          <div class="tab active" data-tab="stays">Stays</div>
-          <div class="tab" data-tab="packages">Travel Packages</div>
+      <div class="screen">
+
+        <!-- Status + top nav -->
+        <div class="status-bar">
+          <span>505</span>
+          <nav>
+            <a href="#" class="top-link">Stays</a>
+            <a href="#" class="top-link">Experiences</a>
+            <a href="#" class="top-link">Mobile app</a>
+          </nav>
+          <span class="lang-pill">EN</span>
         </div>
 
-        <!-- Stays form -->
-        <form class="form-stays">
-          <label>Going to</label><input placeholder="Enter hotel destination">
-          <label>Check-in Date</label><input type="date">
-          <label>Check-out Date</label><input type="date">
-          <label>Travelers</label><select><option>1 Adult</option></select>
-          <button type="button" class="search-btn">Search Stays</button>
-        </form>
+        <!-- Hero image & CTA -->
+        <div class="hero">
+          <div class="hero-content">
+            <h2>Discover the world,<br>your way</h2>
+            <p>Book Last Minute Hotels and Stays</p>
+            <button class="book-now">Book Now</button>
+          </div>
+        </div>
 
-        <!-- Packages form -->
-        <form class="form-packages" hidden>
-          <label>From</label><input placeholder="Departure city">
-          <label>Destination</label><input placeholder="Enter destination">
-          <label>Dates</label><input type="date">
-          <label>Travelers</label><select><option>1 Adult</option></select>
-          <button type="button" class="search-btn">Search Packages</button>
-        </form>
-      </div>
+        <!-- Search card -->
+        <div class="card">
+          <div class="tabs">
+            <div class="tab active" data-tab="stays">Stays</div>
+            <div class="tab" data-tab="packages">Travel Packages</div>
+          </div>
 
-      <!-- Property types -->
-      <div class="property-wrap">
-        <div class="property-title">Browse by property type</div>
+          <!-- STAYS form (default) -->
+          <form class="form-stays">
+            <label>Going to</label>
+            <input placeholder="Enter hotel destination">
+
+            <label>Check-in Date</label>
+            <input type="date">
+
+            <label>Check-out Date</label>
+            <input type="date">
+
+            <label>Travelers</label>
+            <select><option>1 Adult</option></select>
+
+            <button type="button" class="search-btn">Search Stays</button>
+          </form>
+
+          <!-- PACKAGES form (hidden until selected) -->
+          <form class="form-packages" hidden>
+            <label>From</label>
+            <input placeholder="Departure city">
+
+            <label>Destination</label>
+            <input placeholder="Enter destination">
+
+            <label>Dates</label>
+            <input type="date">
+
+            <label>Travelers</label>
+            <select><option>1 Adult</option></select>
+
+            <button type="button" class="search-btn">Search Packages</button>
+          </form>
+        </div>
+
+        <!-- Sample “Browse by property type” scroll -->
+        <h3 style="padding:0 20px 6px;color:#000;font-size:1.05rem">Browse by property type</h3>
         <div class="property-scroll">
-          <img src="https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?auto=format&fit=crop&w=600&q=80" alt="Hotels">
-          <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=600&q=80" alt="Apartments">
-          <img src="https://images.unsplash.com/photo-1508264165352-258a6cea0f6d?auto=format&fit=crop&w=600&q=80" alt="Resorts">
-          <img src="https://images.unsplash.com/photo-1576661935036-ab5c9d1f9d1b?auto=format&fit=crop&w=600&q=80" alt="Villas">
+          <img src="https://source.unsplash.com/collection/483251/200x200" alt="Hotels">
+          <img src="https://source.unsplash.com/collection/483251/201x201" alt="Apartments">
+          <img src="https://source.unsplash.com/collection/483251/202x202" alt="Resorts">
+          <img src="https://source.unsplash.com/collection/483251/203x203" alt="Villas">
         </div>
+
+        <!-- Bottom navigation -->
+        <nav class="bottom-nav">
+          <button data-nav="home" class="active"><i data-feather="home"></i>Home</button>
+          <button data-nav="search"><i data-feather="search"></i>Search</button>
+          <button data-nav="type"><i data-feather="grid"></i>Type</button>
+          <button data-nav="profile"><i data-feather="user"></i>Profile</button>
+        </nav>
       </div>
+    </section>
+  </main>
 
-      <!-- Bottom nav -->
-      <nav class="bottom-nav">
-        <button data-nav="home" class="active"><i data-feather="home"></i>Home</button>
-        <button data-nav="search"><i data-feather="search"></i>Search</button>
-        <button data-nav="type"><i data-feather="grid"></i>Type</button>
-        <button data-nav="profile"><i data-feather="user"></i>Profile</button>
-      </nav>
+  <!-- ======  FOOTER  ====== -->
+  <footer>
+    <div style="display:flex;align-items:center;gap:12px">
+      <img src="https://s.w.org/style/images/about/WordPress-logotype-wmark-white.png" alt="WordPress logo">
+      <span>WordPress</span>
     </div>
-  </section>
-</main>
+    <div>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+    </div>
+  </footer>
 
-<!-- ===  WORDPRESS-STYLE FOOTER  === -->
-<footer>
-  <div style="display:flex;align-items:center;gap:12px">
-    <img src="https://s.w.org/style/images/about/WordPress-logotype-wmark-white.png" alt="WordPress">
-    <span>WordPress</span>
-  </div>
-  <div>
-    <a href="#">Privacy Policy</a>
-    <a href="#">Terms of Service</a>
-  </div>
-</footer>
+  <!-- ----------  SCRIPTS  ---------- -->
+  <script>
+    // Replace icon placeholders
+    feather.replace();
 
-<!-- =====  SCRIPTS  ===== -->
-<script>
-  feather.replace();
-
-  /* tab switching */
-  document.querySelectorAll('.tab').forEach(tab=>{
-    tab.addEventListener('click',()=>{
-      document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-      tab.classList.add('active');
-      const sel=tab.dataset.tab;
-      document.querySelector('.form-stays').hidden = sel!=='stays';
-      document.querySelector('.form-packages').hidden = sel!=='packages';
+    /* TAB SWITCHING */
+    document.querySelectorAll('.tab').forEach(tab=>{
+      tab.addEventListener('click',()=>{
+        // visual state
+        document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+        tab.classList.add('active');
+        // forms
+        const sel = tab.dataset.tab;
+        document.querySelector('.form-stays').hidden = sel!=='stays';
+        document.querySelector('.form-packages').hidden = sel!=='packages';
+      });
     });
-  });
 
-  /* bottom-nav active state */
-  document.querySelectorAll('.bottom-nav button').forEach(b=>{
-    b.addEventListener('click',()=>{
-      document.querySelectorAll('.bottom-nav button').forEach(x=>x.classList.remove('active'));
-      b.classList.add('active');
+    /* BOTTOM NAV HIGHLIGHT */
+    document.querySelectorAll('.bottom-nav button').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        document.querySelectorAll('.bottom-nav button').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+      });
     });
-  });
 
-  /* smooth scroll from “Interact” */
-  document.getElementById('interactBtn').onclick=e=>{
-    e.preventDefault();
-    document.getElementById('prototype').scrollIntoView({behavior:'smooth',block:'center'});
-  };
-</script>
+    /* “INTERACT WITH PROTOTYPE” smooth scroll */
+    document.getElementById('interactBtn').onclick = e=>{
+      e.preventDefault();
+      document.getElementById('prototype').scrollIntoView({behavior:'smooth', block:'center'});
+    };
+  </script>
 </body>
 </html>
