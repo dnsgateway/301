@@ -1,280 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>505 • Travel Savings</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Bootstrap grid only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<!-- Icons -->
-<script src="https://unpkg.com/feather-icons"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-<style>
-/* ===== GLOBAL / GRADIENT BACKGROUND ===== */
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;font-family:"Poppins",sans-serif;color:#fff}
-body::before{
-  content:"";position:fixed;inset:0;z-index:-1;
-  background:linear-gradient(135deg,#0d0b31 0%,#223ab0 35%,#7f37ff 100%);
-}
-
-/* ===== SPLIT LAYOUT ===== */
-.wrapper{min-height:100%;display:flex;flex-direction:column;}
-.hero{flex:1;display:flex;gap:4vw;padding:6vh 6vw;}
-.left{flex:1;max-width:480px;display:flex;flex-direction:column;justify-content:center}
-.right{flex:1;display:flex;justify-content:center;align-items:center}
-
-/* ===== MARKETING PANEL ===== */
-.left h1{font-weight:700;margin-bottom:.5rem}
-.left p{opacity:.9;margin-bottom:1.8rem;line-height:1.6}
-.store-badge img{height:46px}
-#cta-btn{margin-top:2.2rem}
-.lang-pill{display:inline-block;padding:.15rem .55rem;border:1px solid #000;border-radius:8px;font-size:.75rem;color:#000;background:#ffcf32}
-
-/* ===== iPHONE MOCK-UP FRAME ===== */
-.iphone{
-  position:relative;width:280px;height:580px;border:12px solid #000;
-  border-radius:38px;background:#fff;overflow:hidden;box-shadow:0 22px 46px rgba(0,0,0,.45)
-}
-.iphone::before{/* notch */content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
-  width:150px;height:32px;background:#000;border-bottom-left-radius:18px;border-bottom-right-radius:18px}
-.status-bar{height:26px;background:#000;color:#fff;font-size:.7rem;padding:0 .55rem;
-  display:flex;justify-content:space-between;align-items:center}
-.status-bar i{width:15px;height:15px;stroke-width:2.3px}
-
-/* ===== SCREEN ===== */
-.screen{height:calc(100% - 88px);overflow-y:auto;-webkit-overflow-scrolling:touch;}
-.app-nav{display:flex;align-items:center;padding:.7rem 1rem;background:#fff;color:#000;font-size:.9rem}
-.logo{font-family:'Permanent Marker',cursive;font-size:1.35rem;margin-right:auto}
-.app-nav a{color:#555;margin-left:1rem}
-.app-nav a.active{font-weight:600}
-.app-nav .lang-pill{margin-left:1rem}
-
-.hero-slide{position:relative;height:160px;overflow:hidden}
-.hero-slide img{width:100%;height:100%;object-fit:cover;filter:brightness(.55)}
-.hero-slide .overlay{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
-.overlay h3{font-size:1.1rem;line-height:1.25;font-weight:700}
-.overlay p{font-size:.75rem;margin:.2rem 0 .7rem}
-.overlay .btn{font-size:.75rem;width:75%;background:#ffcf32;color:#000}
-
-.booking-card{padding:1rem}
-.tabs .nav-link{font-size:.8rem;padding:.25rem 0;color:#000}
-.tabs .nav-link.active{font-weight:600;border-bottom:2px solid #000}
-.form-label{font-size:.72rem;font-weight:600;color:#000;margin-bottom:.2rem}
-.form-control,.trav-btn{font-size:.78rem;border:1px solid #ddd;border-radius:8px;background:#f8f9fa}
-.trav-btn{display:flex;justify-content:space-between;align-items:center;padding:.55rem .7rem;color:#000}
-.trav-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200}
-.trav-content{background:#fff;border-radius:12px;padding:1rem;color:#000;width:90%;max-width:320px;margin:12vh auto}
-.trav-content h5{font-size:1rem;margin-bottom:1rem}
-.count-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem}
-.counter span{cursor:pointer;width:24px;height:24px;border:1px solid #000;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-weight:600}
-.counter input{width:36px;text-align:center;border:none;background:transparent;font-size:.85rem}
-
-.scroller{padding:1rem}
-.scroller h4{color:#000;font-size:.9rem;margin-bottom:.55rem;font-weight:600}
-.scroll-row{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory}
-.pcard{flex:0 0 120px;scroll-snap-align:start;position:relative}
-.pcard img{width:100%;height:80px;object-fit:cover;border-radius:10px}
-.pcard span{position:absolute;bottom:6px;left:6px;font-size:.7rem;background:rgba(0,0,0,.6);padding:2px 6px;border-radius:4px}
-
-.bottom-nav{background:#000;color:#888;display:flex;align-items:center}
-.bottom-nav a{flex:1;text-align:center;padding:12px 0}
-.bottom-nav a.active{color:#ffcf32}
-.bottom-nav i{width:20px;height:20px}
-
-/* ===== FOOTER ===== */
-.wp-footer{background:#000;margin-top:auto;font-size:.85rem}
-.wp-footer a{color:#fff;opacity:.8}
-.wp-footer a:hover{opacity:1}
-.wp-footer p{margin-bottom:0;color:#aaa;font-size:.75rem;border-top:1px solid #222;padding-top:.75rem}
-</style>
+  <meta charset="utf-8">
+  <title>505 – Book Last-Minute Stays & Packages</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Icons -->
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    /* ====  GLOBAL & LAYOUT  =============================================== */
+    :root{
+      --yellow:#ffd439;
+      --dark:#000;
+      --gray:#666;
+      --radius:12px;
+      --grad-1:#0f172a;       /* tweak these two colours to change the gradient */
+      --grad-2:#3b82f6;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    }
+    *,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
+    body{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      background:linear-gradient(135deg,var(--grad-1) 0%,var(--grad-2) 100%);
+      color:#fff;
+    }
+    a{color:inherit;text-decoration:none}
+    /* split panel */
+    .wrapper{flex:1;display:flex;flex-wrap:wrap;padding:3rem 1rem;gap:2rem;max-width:1280px;margin:auto}
+    .left,.right{flex:1 1 400px}
+    /* ====  LEFT PROMO PANEL  ============================================= */
+    .left{
+      display:flex;flex-direction:column;justify-content:center;gap:1.6rem
+    }
+    .left h1{font-size:clamp(2rem,6vw,3.5rem);line-height:1.15;font-weight:700}
+    .left p{max-width:36ch;font-size:1.125rem;opacity:.85}
+    .cta-btn{
+      background:var(--yellow);color:var(--dark);border:none;
+      padding:.9rem 2rem;border-radius:var(--radius);font-weight:600;cursor:pointer;font-size:1rem
+    }
+    .stores{display:flex;gap:1rem;align-items:center}
+    .stores img{height:46px}
+    /* ====  PHONE MOCK-UP  ================================================= */
+    .phone{
+      position:relative;
+      margin-inline:auto;
+      width:300px;height:600px;
+      border:10px solid #111;border-radius:40px;
+      background:#fff;
+      overflow:hidden;
+      box-shadow:0 20px 40px rgba(0,0,0,.4);
+    }
+    /* notch (pure CSS for brevity) */
+    .phone:before{
+      content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+      width:120px;height:24px;background:#000;border-radius:0 0 12px 12px;
+    }
+    /* == inside the app == */
+    .app{height:100%;overflow-y:auto;color:var(--dark)}
+    /* top nav bar */
+    .topbar{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:.7rem 1rem;font-weight:600;font-size:.9rem;border-bottom:1px solid #eee
+    }
+    .topbar .logo{font-size:1.35rem;font-weight:700}
+    .lang{background:var(--yellow);padding:.2rem .6rem;border-radius:8px}
+    /* hero */
+    .hero{
+      position:relative;color:#fff;text-align:center
+    }
+    .hero img{width:100%;display:block}
+    .hero .overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(to bottom,rgba(0,0,0,.2) 0%,rgba(0,0,0,.65) 100%);
+      display:flex;flex-direction:column;justify-content:center;align-items:center;padding:2rem .5rem;
+      gap:.7rem
+    }
+    .hero h2{font-size:1.7rem;font-weight:700}
+    .hero p{font-size:.9rem;opacity:.9}
+    .btn-yellow{
+      background:var(--yellow);color:var(--dark);
+      border:none;padding:.6rem 1.4rem;border-radius:var(--radius);font-weight:600;cursor:pointer
+    }
+    /* tab + search form */
+    .tabs{background:#fff;width:88%;margin:-1rem auto 1rem;border-radius:var(--radius);box-shadow:0 4px 12px rgba(0,0,0,.1)}
+    .tab-head{display:flex}
+    .tab-head button{
+      flex:1;padding:.9rem;font-weight:600;border:none;background:#fff;border-bottom:2px solid transparent;cursor:pointer
+    }
+    .tab-head button.active{border-color:var(--dark)}
+    .form{display:flex;flex-direction:column;gap:.8rem;padding:1rem}
+    .form input,.form select{
+      width:100%;padding:.7rem;border:1px solid #ccc;border-radius:var(--radius);font-size:.9rem
+    }
+    .form .submit{width:100%;margin-top:.3rem}
+    /* browse placeholder */
+    .browse{padding:1rem}
+    .browse h3{font-size:1.2rem;font-weight:700;margin-bottom:.5rem}
+    .browse .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem}
+    .prop{
+      background:#f5f5f5;border-radius:var(--radius);padding:1.4rem .3rem;text-align:center;font-weight:600;font-size:.85rem
+    }
+    /* bottom nav */
+    .bottom-nav{
+      position:sticky;bottom:0;left:0;right:0;background:#fff;
+      display:flex;justify-content:space-around;padding:.4rem 0;border-top:1px solid #eee
+    }
+    .bottom-nav button{
+      background:none;border:none;display:flex;flex-direction:column;align-items:center;
+      gap:.2rem;font-size:.67rem;color:var(--gray);cursor:pointer
+    }
+    .bottom-nav button.active{color:var(--dark)}
+    /* ====  FOOTER (WordPress-like)  ======================================= */
+    footer{
+      background:#101010;color:#b3b3b3;padding:3rem 1rem;font-size:.875rem
+    }
+    .footer-inner{max-width:1280px;margin:auto;display:flex;flex-wrap:wrap;gap:3rem}
+    .footer-inner section{flex:1 1 200px}
+    .footer-logo{font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:.6rem}
+    .footer-menu a{display:block;margin:.35rem 0;color:inherit}
+    .copyright{text-align:center;margin-top:2rem;font-size:.75rem;opacity:.6}
+    /* ====  MEDIA QUERIES  ================================================= */
+    @media (max-width:800px){
+      .wrapper{flex-direction:column;align-items:center;text-align:center}
+      .left h1{font-size:2.3rem}
+      .left p{margin-inline:auto}
+    }
+  </style>
 </head>
 <body>
-<div class="wrapper">
 
-<!-- ===== HERO SPLIT ===== -->
-<section class="hero">
-  <!-- LEFT PANEL -->
-  <div class="left">
-    <h1>505 Travel Savings</h1>
-    <p>Discover the world, your way. Book last-minute stays, build travel packages and unlock member-only deals—right in your pocket.</p>
+  <main class="wrapper">
+    <!-- LEFT / PROMO ------------------------------------------------------->
+    <section class="left">
+      <h1>Discover the world, <br>your way</h1>
+      <p>The 505 app finds the best last-minute hotel deals and travel packages. Book in seconds – anywhere, anytime.</p>
+      <button class="cta-btn" id="shakeBtn">Interact with prototype</button>
 
-    <div class="d-flex gap-3">
-      <a href="#" class="store-badge"><img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="App Store"></a>
-      <a href="#" class="store-badge"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Google Play"></a>
-    </div>
-
-    <button id="cta-btn" class="btn btn-warning btn-lg text-dark">Try the Live Prototype</button>
-  </div>
-
-  <!-- RIGHT PANEL – PHONE MOCK-UP -->
-  <div class="right">
-    <div class="iphone">
-      <!-- status bar -->
-      <div class="status-bar"><span>9:41</span><span><i data-feather="wifi"></i>&nbsp;<i data-feather="battery"></i></span></div>
-
-      <!-- screen -->
-      <div class="screen">
-
-        <!-- in-app nav -->
-        <div class="app-nav">
-          <span class="logo">505</span>
-          <a class="active" href="#">Stays</a>
-          <a href="#" class="disabled text-decoration-line-through">Experiences</a>
-          <a href="#"><i data-feather="smartphone"></i></a>
-          <span class="lang-pill">EN</span>
-        </div>
-
-        <!-- hero slide -->
-        <div class="hero-slide">
-          <!-- use the uploaded image; fall back to unsplash if removed -->
-          <img src="B0514AA5-585E-4FF8-9160-DA4C3440DD29.jpeg" onerror="this.src='https://images.unsplash.com/photo-1526779259212-756e75f1a72b?auto=format&fit=crop&w=800&q=60'" alt="">
-          <div class="overlay">
-            <h3>Discover the world,<br>your way</h3>
-            <p>Book Last Minute Hotels and Stays</p>
-            <button class="btn btn-warning btn-sm w-75">Book Now</button>
-          </div>
-        </div>
-
-        <!-- booking card -->
-        <div class="booking-card">
-          <ul class="tabs nav nav-underline gap-3">
-            <li class="nav-item"><a class="nav-link active" data-tab="stays">Stays</a></li>
-            <li class="nav-item"><a class="nav-link" data-tab="packages">Travel Packages</a></li>
-          </ul>
-
-          <!-- STAYS -->
-          <div id="tab-stays" class="tab-pane pt-3">
-            <label class="form-label">Going to</label>
-            <input type="text" class="form-control mb-2" placeholder="Enter hotel destination">
-
-            <div class="d-flex gap-2 mb-2">
-              <input type="date" class="form-control">
-              <input type="date" class="form-control">
-            </div>
-
-            <label class="form-label">Travelers</label>
-            <button class="trav-btn" id="trav-open">
-              <span id="trav-summary">1 Adult</span><i data-feather="chevron-down"></i>
-            </button>
-
-            <button class="btn btn-warning w-100 mt-3 text-dark">Search Stays</button>
-          </div>
-
-          <!-- PACKAGES -->
-          <div id="tab-packages" class="tab-pane pt-3 d-none">
-            <p class="small text-muted">Packages form placeholder…</p>
-            <button class="btn btn-warning w-100 text-dark">Search Packages</button>
-          </div>
-        </div>
-
-        <!-- property scroller -->
-        <div class="scroller">
-          <h4>Browse by property type</h4>
-          <div class="scroll-row">
-            <div class="pcard"><img src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=400&q=60"><span>Hotels</span></div>
-            <div class="pcard"><img src="https://images.unsplash.com/photo-1507086185671-33dcf56a7d47?auto=format&fit=crop&w=400&q=60"><span>Apartments</span></div>
-            <div class="pcard"><img src="https://images.unsplash.com/photo-1600585154340-be6161f8b4b6?auto=format&fit=crop&w=400&q=60"><span>Resorts</span></div>
-          </div>
-        </div>
-      </div><!-- /screen -->
-
-      <!-- bottom nav -->
-      <div class="bottom-nav">
-        <a href="#" class="active"><i data-feather="home"></i></a>
-        <a href="#"><i data-feather="calendar"></i></a>
-        <a href="#"><i data-feather="credit-card"></i></a>
-        <a href="#"><i data-feather="user"></i></a>
+      <div class="stores">
+        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
+        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
       </div>
+    </section>
+
+    <!-- RIGHT / PHONE MOCK-UP --------------------------------------------->
+    <section class="right">
+      <div class="phone" id="phone">
+        <div class="app">
+          <!-- top bar -->
+          <div class="topbar">
+            <span class="logo">505</span>
+            <nav style="display:flex;gap:1rem;font-size:.85rem">
+              <a href="#">Stays</a><a href="#">Experiences</a><a href="#">Mobile&nbsp;app</a>
+            </nav>
+            <span class="lang">EN</span>
+          </div>
+
+          <!-- hero -->
+          <div class="hero">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&q=80&fit=crop&w=800" alt="">
+            <div class="overlay">
+              <h2>Discover the world,<br>your way</h2>
+              <p>Book Last Minute Hotels and Stays</p>
+              <button class="btn-yellow">Book&nbsp;Now</button>
+            </div>
+          </div>
+
+          <!-- tabbed search card -->
+          <div class="tabs">
+            <div class="tab-head">
+              <button class="active" data-tab="staysTab">Stays</button>
+              <button data-tab="pkgsTab">Travel&nbsp;Packages</button>
+            </div>
+            <!-- stays form -->
+            <form class="form" id="staysTab">
+              <input type="text" placeholder="Going to">
+              <input type="date" placeholder="Check-in Date">
+              <input type="date" placeholder="Check-out Date">
+              <select>
+                <option>1 Adult</option><option>2 Adults</option><option>Family</option>
+              </select>
+              <button class="btn-yellow submit">Search Stays</button>
+            </form>
+            <!-- packages form -->
+            <form class="form" id="pkgsTab" hidden>
+              <input type="text" placeholder="Departure city">
+              <input type="text" placeholder="Destination">
+              <input type="date" placeholder="Depart">
+              <input type="date" placeholder="Return">
+              <button class="btn-yellow submit">Search Packages</button>
+            </form>
+          </div>
+
+          <!-- browse -->
+          <div class="browse">
+            <h3>Browse by property type</h3>
+            <div class="grid">
+              <div class="prop">Hotels</div>
+              <div class="prop">Apartments</div>
+              <div class="prop">Resorts</div>
+              <div class="prop">Villas</div>
+            </div>
+          </div>
+        </div><!-- /.app -->
+
+        <!-- bottom nav -->
+        <nav class="bottom-nav" id="bottomNav">
+          <button class="active"><i data-feather="home"></i>Home</button>
+          <button><i data-feather="search"></i>Explore</button>
+          <button><i data-feather="bookmark"></i>Trips</button>
+          <button><i data-feather="user"></i>Account</button>
+        </nav>
+      </div><!-- /.phone -->
+    </section>
+  </main>
+
+  <!-- FOOTER --------------------------------------------------------------->
+  <footer>
+    <div class="footer-inner">
+      <section>
+        <div class="footer-logo">505 Travel</div>
+        <p>Unforgettable experiences at unbeatable prices.</p>
+      </section>
+      <section class="footer-menu">
+        <h4 style="color:#fff;margin-bottom:.4rem">Company</h4>
+        <a href="#">About us</a><a href="#">Careers</a><a href="#">Press</a>
+      </section>
+      <section class="footer-menu">
+        <h4 style="color:#fff;margin-bottom:.4rem">Support</h4>
+        <a href="#">Help Center</a><a href="#">Contact</a><a href="#">Terms &amp; Privacy</a>
+      </section>
     </div>
-  </div>
-</section>
+    <p class="copyright">© 2025 505 Travel, Inc. All rights reserved.</p>
+  </footer>
 
-<!-- ===== WORDPRESS FOOTER ===== -->
-<footer class="wp-footer">
-  <div class="container-lg py-4 d-flex flex-wrap justify-content-between gap-4">
-    <ul class="list-unstyled"><li><strong>About Us</strong></li><li><a href="#">List your property</a></li></ul>
-    <ul class="list-unstyled"><li><strong>Cities</strong></li><li><a href="#">Chicago</a></li><li><a href="#">Orlando</a></li><li><a href="#">Miami</a></li><li><a href="#">New York</a></li></ul>
-    <ul class="list-unstyled"><li><strong>Legal</strong></li><li><a href="#">Terms of Use</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Cookie Policy</a></li></ul>
-    <ul class="list-unstyled"><li><strong>Follow Us</strong></li><li><a href="#">Instagram</a></li><li><a href="#">Blog</a></li></ul>
-  </div>
-  <p class="text-center">© 2025 WordPress</p>
-</footer>
+  <!-- SCRIPTS -------------------------------------------------------------->
+  <script>
+    // activate feather icons
+    feather.replace();
 
-</div><!-- /wrapper -->
+    // tab switcher
+    document.querySelectorAll('.tab-head button').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        document.querySelectorAll('.tab-head button').forEach(b=>b.classList.toggle('active',b===btn));
+        document.getElementById('staysTab').hidden = btn.dataset.tab !== 'staysTab';
+        document.getElementById('pkgsTab').hidden = btn.dataset.tab !== 'pkgsTab';
+      });
+    });
 
-<!-- ===== JS (tabs, traveler modal, icon init) ===== -->
-<div class="trav-modal" id="trav-modal">
-  <div class="trav-content">
-    <h5>Select travelers</h5>
-    <div class="count-row">Adults
-      <div class="counter"><span data-type="a" class="minus">-</span>
-        <input id="a" value="1" readonly><span data-type="a" class="plus">+</span></div></div>
-    <div class="count-row">Children
-      <div class="counter"><span data-type="c" class="minus">-</span>
-        <input id="c" value="0" readonly><span data-type="c" class="plus">+</span></div></div>
-    <div class="count-row">Infants
-      <div class="counter"><span data-type="i" class="minus">-</span>
-        <input id="i" value="0" readonly><span data-type="i" class="plus">+</span></div></div>
-    <button id="trav-apply" class="btn btn-warning w-100 text-dark mt-2">Done</button>
-  </div>
-</div>
+    // bottom nav active state
+    document.querySelectorAll('#bottomNav button').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        document.querySelectorAll('#bottomNav button').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
 
-<script>
-/* feather icons */
-feather.replace();
-
-/* tab toggle */
-document.querySelectorAll('.tabs .nav-link').forEach(link=>{
-  link.addEventListener('click',e=>{
-    e.preventDefault();
-    if(link.classList.contains('active')) return;
-    const container=link.closest('.booking-card');
-    container.querySelectorAll('.tabs .nav-link').forEach(l=>l.classList.remove('active'));
-    link.classList.add('active');
-    container.querySelectorAll('.tab-pane').forEach(p=>p.classList.add('d-none'));
-    container.querySelector('#tab-'+link.dataset.tab).classList.remove('d-none');
-  });
-});
-
-/* traveler modal */
-const openBtn=document.getElementById('trav-open');
-const modal=document.getElementById('trav-modal');
-const summary=document.getElementById('trav-summary');
-openBtn.onclick=()=>modal.style.display='block';
-modal.addEventListener('click',e=>{
-  if(e.target===modal) modal.style.display='none';
-});
-modal.querySelectorAll('.plus,.minus').forEach(btn=>{
-  btn.onclick=()=>{
-    const t=btn.dataset.type,input=document.getElementById(t);
-    let val=parseInt(input.value);
-    if(btn.classList.contains('plus')) val++;
-    else if(val> (t==='a'?1:0)) val--;
-    input.value=val;
-  };
-});
-document.getElementById('trav-apply').onclick=()=>{
-  const a=parseInt(document.getElementById('a').value),
-        c=parseInt(document.getElementById('c').value),
-        i=parseInt(document.getElementById('i').value);
-  let text=`${a} Adult${a>1?'s':''}`;
-  if(c) text+=`, ${c} Child${c>1?'ren':''}`;
-  if(i) text+=`, ${i} Infant${i>1?'s':''}`;
-  summary.textContent=text; modal.style.display='none';
-};
-
-/* bottom nav active state */
-document.querySelectorAll('.bottom-nav a').forEach(link=>{
-  link.addEventListener('click',e=>{
-    e.preventDefault();
-    link.parentElement.querySelectorAll('a').forEach(l=>l.classList.remove('active'));
-    link.classList.add('active');
-  });
-});
-
-/* CTA scroll to phone */
-document.getElementById('cta-btn').onclick=()=>document.querySelector('.right').scrollIntoView({behavior:'smooth',block:'center'});
-</script>
+    // shake animation when main CTA is clicked
+    const phone = document.getElementById('phone');
+    document.getElementById('shakeBtn').addEventListener('click',()=>{
+      phone.animate([
+        {transform:'translateX(0)'},
+        {transform:'translateX(-8px)'},
+        {transform:'translateX(8px)'},
+        {transform:'translateX(0)'}
+      ],{duration:350});
+      phone.scrollIntoView({behavior:'smooth',block:'center'});
+    });
+  </script>
 </body>
 </html>
