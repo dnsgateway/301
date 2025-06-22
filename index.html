@@ -1,272 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>505 – Book Last-Minute Stays & Packages</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Icons -->
-  <script src="https://unpkg.com/feather-icons"></script>
-  <style>
-    /* ====  GLOBAL & LAYOUT  =============================================== */
-    :root{
-      --yellow:#ffd439;
-      --dark:#000;
-      --gray:#666;
-      --radius:12px;
-      --grad-1:#0f172a;       /* tweak these two colours to change the gradient */
-      --grad-2:#3b82f6;
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    }
-    *,*:before,*:after{box-sizing:border-box;margin:0;padding:0}
-    body{
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-      background:linear-gradient(135deg,var(--grad-1) 0%,var(--grad-2) 100%);
-      color:#fff;
-    }
-    a{color:inherit;text-decoration:none}
-    /* split panel */
-    .wrapper{flex:1;display:flex;flex-wrap:wrap;padding:3rem 1rem;gap:2rem;max-width:1280px;margin:auto}
-    .left,.right{flex:1 1 400px}
-    /* ====  LEFT PROMO PANEL  ============================================= */
-    .left{
-      display:flex;flex-direction:column;justify-content:center;gap:1.6rem
-    }
-    .left h1{font-size:clamp(2rem,6vw,3.5rem);line-height:1.15;font-weight:700}
-    .left p{max-width:36ch;font-size:1.125rem;opacity:.85}
-    .cta-btn{
-      background:var(--yellow);color:var(--dark);border:none;
-      padding:.9rem 2rem;border-radius:var(--radius);font-weight:600;cursor:pointer;font-size:1rem
-    }
-    .stores{display:flex;gap:1rem;align-items:center}
-    .stores img{height:46px}
-    /* ====  PHONE MOCK-UP  ================================================= */
-    .phone{
-      position:relative;
-      margin-inline:auto;
-      width:300px;height:600px;
-      border:10px solid #111;border-radius:40px;
-      background:#fff;
-      overflow:hidden;
-      box-shadow:0 20px 40px rgba(0,0,0,.4);
-    }
-    /* notch (pure CSS for brevity) */
-    .phone:before{
-      content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
-      width:120px;height:24px;background:#000;border-radius:0 0 12px 12px;
-    }
-    /* == inside the app == */
-    .app{height:100%;overflow-y:auto;color:var(--dark)}
-    /* top nav bar */
-    .topbar{
-      display:flex;align-items:center;justify-content:space-between;
-      padding:.7rem 1rem;font-weight:600;font-size:.9rem;border-bottom:1px solid #eee
-    }
-    .topbar .logo{font-size:1.35rem;font-weight:700}
-    .lang{background:var(--yellow);padding:.2rem .6rem;border-radius:8px}
-    /* hero */
-    .hero{
-      position:relative;color:#fff;text-align:center
-    }
-    .hero img{width:100%;display:block}
-    .hero .overlay{
-      position:absolute;inset:0;
-      background:linear-gradient(to bottom,rgba(0,0,0,.2) 0%,rgba(0,0,0,.65) 100%);
-      display:flex;flex-direction:column;justify-content:center;align-items:center;padding:2rem .5rem;
-      gap:.7rem
-    }
-    .hero h2{font-size:1.7rem;font-weight:700}
-    .hero p{font-size:.9rem;opacity:.9}
-    .btn-yellow{
-      background:var(--yellow);color:var(--dark);
-      border:none;padding:.6rem 1.4rem;border-radius:var(--radius);font-weight:600;cursor:pointer
-    }
-    /* tab + search form */
-    .tabs{background:#fff;width:88%;margin:-1rem auto 1rem;border-radius:var(--radius);box-shadow:0 4px 12px rgba(0,0,0,.1)}
-    .tab-head{display:flex}
-    .tab-head button{
-      flex:1;padding:.9rem;font-weight:600;border:none;background:#fff;border-bottom:2px solid transparent;cursor:pointer
-    }
-    .tab-head button.active{border-color:var(--dark)}
-    .form{display:flex;flex-direction:column;gap:.8rem;padding:1rem}
-    .form input,.form select{
-      width:100%;padding:.7rem;border:1px solid #ccc;border-radius:var(--radius);font-size:.9rem
-    }
-    .form .submit{width:100%;margin-top:.3rem}
-    /* browse placeholder */
-    .browse{padding:1rem}
-    .browse h3{font-size:1.2rem;font-weight:700;margin-bottom:.5rem}
-    .browse .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem}
-    .prop{
-      background:#f5f5f5;border-radius:var(--radius);padding:1.4rem .3rem;text-align:center;font-weight:600;font-size:.85rem
-    }
-    /* bottom nav */
-    .bottom-nav{
-      position:sticky;bottom:0;left:0;right:0;background:#fff;
-      display:flex;justify-content:space-around;padding:.4rem 0;border-top:1px solid #eee
-    }
-    .bottom-nav button{
-      background:none;border:none;display:flex;flex-direction:column;align-items:center;
-      gap:.2rem;font-size:.67rem;color:var(--gray);cursor:pointer
-    }
-    .bottom-nav button.active{color:var(--dark)}
-    /* ====  FOOTER (WordPress-like)  ======================================= */
-    footer{
-      background:#101010;color:#b3b3b3;padding:3rem 1rem;font-size:.875rem
-    }
-    .footer-inner{max-width:1280px;margin:auto;display:flex;flex-wrap:wrap;gap:3rem}
-    .footer-inner section{flex:1 1 200px}
-    .footer-logo{font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:.6rem}
-    .footer-menu a{display:block;margin:.35rem 0;color:inherit}
-    .copyright{text-align:center;margin-top:2rem;font-size:.75rem;opacity:.6}
-    /* ====  MEDIA QUERIES  ================================================= */
-    @media (max-width:800px){
-      .wrapper{flex-direction:column;align-items:center;text-align:center}
-      .left h1{font-size:2.3rem}
-      .left p{margin-inline:auto}
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>505 Travel App</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="scripts.js"></script>
 </head>
 <body>
-
-  <main class="wrapper">
-    <!-- LEFT / PROMO ------------------------------------------------------->
-    <section class="left">
-      <h1>Discover the world, <br>your way</h1>
-      <p>The 505 app finds the best last-minute hotel deals and travel packages. Book in seconds – anywhere, anytime.</p>
-      <button class="cta-btn" id="shakeBtn">Interact with prototype</button>
-
-      <div class="stores">
-        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store">
-        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play">
+  <div class="container">
+    <section class="intro">
+      <h1>Discover the world with 505</h1>
+      <p>Last-minute hotel & stay bookings with personalized experiences.</p>
+      <button class="explore-btn">Explore the Prototype</button>
+      <div class="store-icons">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/Available_on_the_App_Store_%28black%29_SVG.svg" alt="Apple Store" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" />
       </div>
     </section>
 
-    <!-- RIGHT / PHONE MOCK-UP --------------------------------------------->
-    <section class="right">
-      <div class="phone" id="phone">
-        <div class="app">
-          <!-- top bar -->
-          <div class="topbar">
-            <span class="logo">505</span>
-            <nav style="display:flex;gap:1rem;font-size:.85rem">
-              <a href="#">Stays</a><a href="#">Experiences</a><a href="#">Mobile&nbsp;app</a>
-            </nav>
-            <span class="lang">EN</span>
-          </div>
+    <section class="mockup">
+      <div class="phone-ui">
+        <header class="top-bar">
+          <span class="logo">505</span>
+          <nav>
+            <a href="#">Stays</a>
+            <a href="#">Experiences</a>
+            <a href="#">Mobile app</a>
+          </nav>
+          <button class="lang-btn">EN</button>
+        </header>
 
-          <!-- hero -->
-          <div class="hero">
-            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&q=80&fit=crop&w=800" alt="">
-            <div class="overlay">
-              <h2>Discover the world,<br>your way</h2>
-              <p>Book Last Minute Hotels and Stays</p>
-              <button class="btn-yellow">Book&nbsp;Now</button>
-            </div>
+        <div class="hero">
+          <div class="hero-text">
+            <h2>Discover the world, your way</h2>
+            <p>Book Last Minute Hotels and Stays</p>
+            <button class="book-btn">Book Now</button>
           </div>
+        </div>
 
-          <!-- tabbed search card -->
-          <div class="tabs">
-            <div class="tab-head">
-              <button class="active" data-tab="staysTab">Stays</button>
-              <button data-tab="pkgsTab">Travel&nbsp;Packages</button>
-            </div>
-            <!-- stays form -->
-            <form class="form" id="staysTab">
-              <input type="text" placeholder="Going to">
-              <input type="date" placeholder="Check-in Date">
-              <input type="date" placeholder="Check-out Date">
-              <select>
-                <option>1 Adult</option><option>2 Adults</option><option>Family</option>
-              </select>
-              <button class="btn-yellow submit">Search Stays</button>
-            </form>
-            <!-- packages form -->
-            <form class="form" id="pkgsTab" hidden>
-              <input type="text" placeholder="Departure city">
-              <input type="text" placeholder="Destination">
-              <input type="date" placeholder="Depart">
-              <input type="date" placeholder="Return">
-              <button class="btn-yellow submit">Search Packages</button>
-            </form>
+        <div class="tabs">
+          <button class="tab active">Stays</button>
+          <button class="tab">Travel Packages</button>
+        </div>
+
+        <form class="booking-form">
+          <input type="text" placeholder="Enter hotel destination" />
+          <div class="date-pair">
+            <input type="date" />
+            <input type="date" />
           </div>
+          <select>
+            <option>1 Adult</option>
+            <option>2 Adults</option>
+            <option>Family</option>
+          </select>
+          <button type="submit" class="search-btn">Search Stays</button>
+        </form>
 
-          <!-- browse -->
-          <div class="browse">
-            <h3>Browse by property type</h3>
-            <div class="grid">
-              <div class="prop">Hotels</div>
-              <div class="prop">Apartments</div>
-              <div class="prop">Resorts</div>
-              <div class="prop">Villas</div>
-            </div>
-          </div>
-        </div><!-- /.app -->
-
-        <!-- bottom nav -->
-        <nav class="bottom-nav" id="bottomNav">
-          <button class="active"><i data-feather="home"></i>Home</button>
-          <button><i data-feather="search"></i>Explore</button>
-          <button><i data-feather="bookmark"></i>Trips</button>
-          <button><i data-feather="user"></i>Account</button>
-        </nav>
-      </div><!-- /.phone -->
+        <footer class="bottom-nav">
+          <a href="#">🏨</a>
+          <a href="#">📦</a>
+          <a href="#">🗺️</a>
+          <a href="#">👤</a>
+        </footer>
+      </div>
     </section>
-  </main>
+  </div>
 
-  <!-- FOOTER --------------------------------------------------------------->
-  <footer>
-    <div class="footer-inner">
-      <section>
-        <div class="footer-logo">505 Travel</div>
-        <p>Unforgettable experiences at unbeatable prices.</p>
-      </section>
-      <section class="footer-menu">
-        <h4 style="color:#fff;margin-bottom:.4rem">Company</h4>
-        <a href="#">About us</a><a href="#">Careers</a><a href="#">Press</a>
-      </section>
-      <section class="footer-menu">
-        <h4 style="color:#fff;margin-bottom:.4rem">Support</h4>
-        <a href="#">Help Center</a><a href="#">Contact</a><a href="#">Terms &amp; Privacy</a>
-      </section>
-    </div>
-    <p class="copyright">© 2025 505 Travel, Inc. All rights reserved.</p>
+  <footer class="wp-footer">
+    <p>© 2025 505 Travel | Powered by WordPress</p>
   </footer>
-
-  <!-- SCRIPTS -------------------------------------------------------------->
-  <script>
-    // activate feather icons
-    feather.replace();
-
-    // tab switcher
-    document.querySelectorAll('.tab-head button').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        document.querySelectorAll('.tab-head button').forEach(b=>b.classList.toggle('active',b===btn));
-        document.getElementById('staysTab').hidden = btn.dataset.tab !== 'staysTab';
-        document.getElementById('pkgsTab').hidden = btn.dataset.tab !== 'pkgsTab';
-      });
-    });
-
-    // bottom nav active state
-    document.querySelectorAll('#bottomNav button').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        document.querySelectorAll('#bottomNav button').forEach(b=>b.classList.remove('active'));
-        btn.classList.add('active');
-      });
-    });
-
-    // shake animation when main CTA is clicked
-    const phone = document.getElementById('phone');
-    document.getElementById('shakeBtn').addEventListener('click',()=>{
-      phone.animate([
-        {transform:'translateX(0)'},
-        {transform:'translateX(-8px)'},
-        {transform:'translateX(8px)'},
-        {transform:'translateX(0)'}
-      ],{duration:350});
-      phone.scrollIntoView({behavior:'smooth',block:'center'});
-    });
-  </script>
 </body>
 </html>
